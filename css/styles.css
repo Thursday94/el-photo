@@ -27,34 +27,95 @@ body {
 .header {
     width: 100%;
     padding: 20px 0;
-    background: #fff;
-    border-bottom: 1px solid #eee;
     position: sticky;
     top: 0;
     z-index: 10;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
+/* плавное появление всей шапки */
 .header__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    opacity: 0;
+    transform: translateY(-8px);
+    animation: glassFade 0.9s ease-out forwards;
+    animation-delay: 0.3s;
 }
 
+@keyframes glassFade {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== LOGO ===== */
 .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: inherit;
     font-size: 44px;
     font-weight: 600;
-    text-decoration: none;
-    color: #000;
 }
 
-.logo span {
-    background: linear-gradient(90deg, #e38faa, #efc5d6, #e38faa);
+/* ELENA — отдельная анимация */
+.logo-main {
+    margin-right: 8px;
+    opacity: 0;
+    transform: translateY(-6px);
+    color: #000;
+    font-weight: 700;
+    animation: logoSlideIn 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+/* PHOTOGRAPHIA — выезд + перелив */
+.logo-sub {
+    opacity: 0;
+    transform: translateY(-6px);
+    background: linear-gradient(90deg, #e38faa, #c46086, #e38faa);
     background-size: 200%;
     -webkit-background-clip: text;
     color: transparent;
-    animation: pinkFlow 4s ease-in-out infinite;
+
+    /* ДВЕ АНИМАЦИИ: появление + перелив */
+    animation-name: logoSlideIn, pinkFlow;
+    animation-duration: 0.8s, 4s;
+    animation-timing-function: ease-out, ease-in-out;
+    animation-fill-mode: forwards, forwards;
+    animation-delay: .65s, 1.5s;
+    /* сначала появление, потом перелив */
 }
 
+/* выезд вверх */
+@keyframes logoSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* плавный перелив розового */
 @keyframes pinkFlow {
     0% {
         background-position: 0% 50%;
@@ -69,6 +130,14 @@ body {
     }
 }
 
+/* сами ключевые кадры */
+@keyframes logoSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .nav {
     display: flex;
     gap: 20px;
@@ -79,10 +148,18 @@ body {
     color: #222;
     font-weight: 500;
     letter-spacing: 0.02em;
+
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: 0.3s;
 }
 
 .nav__link:hover {
+    border-color: #e38faa;
+    border-radius: 100px;
     color: #e38faa;
+    background: rgba(227, 143, 170, 0.08);
 }
 
 .nav__link--primary {
@@ -108,6 +185,21 @@ body {
     padding: 80px 0;
     display: flex;
     align-items: center;
+    background: linear-gradient(135deg, #fff 0%, #ffe8f0 40%, #f8d6e3 100%);
+    position: relative;
+    border-radius: 0 0 40px 40px;
+    animation: heroGlow 10s ease-in-out infinite alternate;
+    background-size: 200% 200%;
+}
+
+@keyframes heroGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
 }
 
 .hero__inner {
@@ -128,6 +220,19 @@ body {
     font-weight: 700;
     letter-spacing: 0.02em;
     margin-bottom: 12px;
+
+    /* 🔥 Анимация */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroFadeUp 1.2s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes heroFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero__subtitle {
@@ -137,7 +242,13 @@ body {
     margin: 15px 0 32px;
     max-width: 36rem;
     /* строка подзаголовка не будет слишком длинной */
+        opacity: 0;
+            transform: translateY(22px);
+            animation: heroFadeUp 1.2s ease-out forwards;
+            animation-delay: 0.45s;
 }
+
+
 
 .hero__actions {
     display: flex;
@@ -147,9 +258,36 @@ body {
     /* чтобы на телефоне могли переноситься */
 }
 
+.hero__actions .btn:nth-child(1) {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: heroFadeUp 1.2s ease-out forwards;
+    animation-delay: 0.65s;
+    /* первая появляется раньше */
+}
+
+.hero__actions .btn:nth-child(2) {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeUp 1.2s ease-out forwards;
+    animation-delay: 0.9s;
+    /* вторая появляется позже */
+}
+
 .hero__note {
     margin-top: 10px;
     color: #555;
+        opacity: 0;
+            transform: translateY(28px);
+            animation: heroFadeUp 1.2s ease-out forwards;
+            animation-delay: 1.15s;
+            /* после кнопок */
+}
+
+.hero__note span {
+    color: #d97298;
+    /* нежно-розовый премиум */
+    font-weight: 600;
 }
 
 .hero__photo img {
@@ -157,6 +295,17 @@ body {
     max-width: 500px;
     border-radius: 16px;
     object-fit: cover;
+            opacity: 0;
+            transform: translateY(30px) scale(1.02);
+            animation: heroPhotoIn 1.4s ease-out forwards;
+            animation-delay: 0.4s;
+}
+
+@keyframes heroPhotoIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 /* ===== BUTTONS ===== */
@@ -384,6 +533,7 @@ body {
     color: #777;
 }
 
+/*=========================================================================================================================*/
 /* ===== RESPONSIVE ===== */
 /* ===== TABLET (до 900px) ===== */
 /* ===== TABLET (до 900px) ===== */
@@ -491,6 +641,7 @@ body {
     }
 }
 
+/*=========================================================================================================================*/
 /* ===== PHONE (до 600px) ===== */
 /* ===== PHONE (до 600px) ===== */
 @media (max-width: 600px) {
@@ -554,5 +705,83 @@ body {
 
     .section {
         padding: 50px 0;
+    }
+}
+/*=========================================================================================================================*/
+/* ===== BIG TABLET / LAPTOP S (901–1200px) ===== */
+@media (min-width: 901px) and (max-width: 1200px) {
+    .container {
+        max-width: 1000px;
+    }
+
+    /* шапка */
+    .header {
+        padding: 18px 0;
+    }
+
+    .header__inner {
+        gap: 16px;
+    }
+
+    .nav {
+        gap: 20px;
+        font-size: 15px;
+    }
+
+    .nav__link--primary {
+        padding: 6px 18px;
+        font-size: 15px;
+    }
+
+    /* hero */
+    .hero {
+        padding: 80px 0 70px;
+    }
+
+    .hero__inner {
+        gap: 40px;
+    }
+
+    .hero__content {
+        max-width: 540px;
+    }
+
+    .hero__title {
+        font-size: 42px;
+    }
+
+    .hero__subtitle {
+        font-size: 18px;
+    }
+
+    .hero__photo img {
+        max-width: 420px;
+        border-radius: 18px;
+    }
+
+    /* portfolio */
+    .portfolio__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    /* oferta */
+    .offer__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    /* o mnie */
+    .about__inner {
+        gap: 40px;
+    }
+
+    .about__content p {
+        max-width: 520px;
+    }
+
+    /* kontakt */
+    .contact__inner {
+        gap: 40px;
     }
 }
