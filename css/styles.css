@@ -116,7 +116,7 @@ body {
 
 .hero__photo img {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     border-radius: 16px;
     object-fit: cover;
 }
@@ -317,10 +317,28 @@ body {
 }
 
 /* ===== RESPONSIVE ===== */
+/* ===== TABLET (до 900px) ===== */
 @media (max-width: 900px) {
+    .hero {
+        padding: 60px 0 50px;
+    }
+
     .hero__inner {
         flex-direction: column;
         text-align: center;
+        gap: 30px;
+    }
+
+    .hero__title {
+        font-size: 36px;
+    }
+
+    .hero__subtitle {
+        font-size: 18px;
+    }
+
+    .hero__actions {
+        justify-content: center;
     }
 
     .about__inner,
@@ -328,8 +346,75 @@ body {
         flex-direction: column;
     }
 
+    .about__content,
+    .contact__info {
+        text-align: center;
+    }
+
+    .contact__form {
+        width: 100%;
+    }
+}
+
+/* ===== PHONE (до 600px) ===== */
+@media (max-width: 600px) {
+    .header {
+        padding: 12px 0;
+    }
+
+    .header__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
     .nav {
-        display: none;
-        /* можно потом сделать бургер */
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 50px 0 40px;
+    }
+
+    .hero__title {
+        font-size: 28px;
+    }
+
+    .hero__subtitle {
+        font-size: 16px;
+        margin: 10px 0 20px;
+    }
+
+    .hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .section {
+        padding: 50px 0;
+    }
+
+    .offer__card {
+        padding: 18px;
+    }
+
+    .portfolio__grid {
+        gap: 14px;
+    }
+
+    .about__photo img {
+        max-width: 100%;
     }
 }
