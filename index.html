@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elena Photografia</title>
+    <link rel="stylesheet" href="./css/styles.css"/>
+
+</head>
+
+<body>
+    <!-- ===== HEADER / MENU ===== -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="#" class="logo">Elena<span>Photo</span></a>
+            <nav class="nav">
+                <a href="#portfolio" class="nav__link">Portfolio</a>
+                <a href="#offer" class="nav__link">Oferta</a>
+                <a href="#about" class="nav__link">O mnie</a>
+                <a href="#testimonials" class="nav__link">Opinie</a>
+                <a href="#contact" class="nav__link nav__link--primary">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO / GŁÓWNY BLOK ===== -->
+    <section class="hero">
+        <div class="container hero__inner">
+            <div class="hero__content">
+                <h1 class="hero__title">
+                    Naturalna fotografia pełna emocji
+                </h1>
+                <p class="hero__subtitle">
+                    Sesje rodzinne, portretowe i ślubne w Słubicach i okolicach.
+                </p>
+                <div class="hero__actions">
+                    <a href="#contact" class="btn btn--primary">Zarezerwuj sesję</a>
+                    <a href="#portfolio" class="btn btn--ghost">Zobacz portfolio</a>
+                </div>
+                <p class="hero__note">
+                    Dostępne terminy: <span>marzec – kwiecień 2026</span>
+                </p>
+            </div>
+
+            <div class="hero__photo">
+                <!-- сюда ставите главное фото/коллаж -->
+                <img src="img/hero.jpg" alt="Fotograf w pracy" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PORTFOLIO ===== -->
+    <section id="portfolio" class="section portfolio">
+        <div class="container">
+            <header class="section__header">
+                <h2>Portfolio</h2>
+                <p>Wybrane kadry z ostatnich sesji.</p>
+            </header>
+
+            <!-- фильтры по категориям -->
+            <div class="portfolio__filters">
+                <button class="portfolio__filter portfolio__filter--active" data-filter="all">Wszystko</button>
+                <button class="portfolio__filter" data-filter="family">Rodzinne</button>
+                <button class="portfolio__filter" data-filter="portrait">Portret</button>
+                <button class="portfolio__filter" data-filter="wedding">Ślubne</button>
+            </div>
+
+            <!-- сетка фото -->
+            <div class="portfolio__grid">
+                <figure class="portfolio__item" data-category="family">
+                    <img src="img/portfolio1.jpg" alt="Sesja rodzinna" />
+                    <figcaption>Sesja rodzinna w plenerze</figcaption>
+                </figure>
+
+                <figure class="portfolio__item" data-category="portrait">
+                    <img src="img/portfolio2.jpg" alt="Portret kobiecy" />
+                    <figcaption>Portret kobiecy w studio</figcaption>
+                </figure>
+
+                <figure class="portfolio__item" data-category="wedding">
+                    <img src="img/portfolio3.jpg" alt="Reportaż ślubny" />
+                    <figcaption>Reportaż ślubny</figcaption>
+                </figure>
+
+                <!-- можно дублировать дальше -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OFERTA ===== -->
+    <section id="offer" class="section offer">
+        <div class="container">
+            <header class="section__header">
+                <h2>Oferta</h2>
+                <p>Proste pakiety, bez ukrytych kosztów.</p>
+            </header>
+
+            <div class="offer__grid">
+                <article class="offer__card">
+                    <h3>Sesja portretowa</h3>
+                    <p>45–60 minut, 10 wyretuszowanych zdjęć w formie elektronicznej.</p>
+                    <p class="offer__price">od 350 zł</p>
+                </article>
+
+                <article class="offer__card">
+                    <h3>Sesja rodzinna</h3>
+                    <p>1–1,5 godziny, 20 zdjęć, możliwość pleneru lub sesji domowej.</p>
+                    <p class="offer__price">od 450 zł</p>
+                </article>
+
+                <article class="offer__card">
+                    <h3>Reportaż ślubny</h3>
+                    <p>Indywidualna wycena w zależności od zakresu.</p>
+                    <p class="offer__price">zapytaj o ofertę</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== O MNIE ===== -->
+    <section id="about" class="section about">
+        <div class="container about__inner">
+            <div class="about__photo">
+                <img src="img/about.jpg" alt="Adrianna – fotograf" />
+            </div>
+            <div class="about__content">
+                <h2>O mnie</h2>
+                <p>
+                    Cześć, jestem Эль Псих.
+                </p>
+                <p>
+                    Podczas sesji stawiam na swobodną atmosferę – nie musisz „umieć pozować”.
+                    Wystarczy, że będziesz sobą, a ja zajmę się resztą.
+                </p>
+                <a href="#contact" class="btn btn--primary">Zapytaj o termin</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OPINIE ===== -->
+    <section id="testimonials" class="section testimonials">
+        <div class="container">
+            <header class="section__header">
+                <h2>Opinie klientów</h2>
+            </header>
+
+            <div class="testimonials__list">
+                <article class="testimonial">
+                    <p class="testimonial__text">
+                        „Cudowna atmosfera i przepiękne zdjęcia. Elena ma niesamowite oko do detali!”
+                    </p>
+                    <p class="testimonial__author">— Marta i Piotr</p>
+                </article>
+
+                <article class="testimonial">
+                    <p class="testimonial__text">
+                        „Pierwsza sesja, na której naprawdę czuliśmy się swobodnie. Zdjęcia to bajka.”
+                    </p>
+                    <p class="testimonial__author">— Anna z rodziną</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KONTAKT ===== -->
+    <section id="contact" class="section contact">
+        <div class="container contact__inner">
+            <div class="contact__info">
+                <h2>Kontakt</h2>
+                <p>Masz pytania lub chcesz zarezerwować sesję? Napisz lub zadzwoń.</p>
+                <ul class="contact__list">
+                    <li><strong>E-mail:</strong> <a
+                            href="mailto:kontakt@elena-photo.pl">kontakt@elena-photo.pl</a></li>
+                    <li><strong>Tel.:</strong> <a href="tel:+48570000000">+48 570 000 000</a></li>
+                    <li><strong>Instagram:</strong> <a href="https://instagram.com/el_photo"
+                            target="_blank">@elphoto.photo</a></li>
+                </ul>
+            </div>
+
+            <form class="contact__form">
+                <label>
+                    Imię i nazwisko
+                    <input type="text" name="name" required />
+                </label>
+
+                <label>
+                    E-mail
+                    <input type="email" name="email" required />
+                </label>
+
+                <label>
+                    Temat
+                    <input type="text" name="subject" />
+                </label>
+
+                <label>
+                    Wiadomość
+                    <textarea name="message" rows="4" required></textarea>
+                </label>
+
+                <button type="submit" class="btn btn--primary">Wyślij wiadomość</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <p>© <span id="year"></span> Elena Photografia . Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script>
+        // автоматический год в футере
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
