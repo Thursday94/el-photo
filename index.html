@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Elena Photografia</title>
     <link rel="stylesheet" href="./css/styles.css"/>
+    <!-- Подключение Flatpickr для выбора даты -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 </head>
 
@@ -29,29 +32,36 @@
     </header>
 
     <!-- ===== HERO / GŁÓWNY BLOK ===== -->
-    <section class="hero">
-        <div class="container hero__inner">
-            <div class="hero__content">
-                <h1 class="hero__title">
-                    Ekskluzywne zdjęcia dla wymagających
-                </h1>
-                <p class="hero__subtitle">
-                    Sesje rodzinne, portretowe i ślubne w Słubicach i okolicach.
-                </p>
-                <div class="hero__actions">
-                    <a href="#contact" class="btn btn--primary">Zarezerwuj sesję</a>
-                    <a href="#portfolio" class="btn btn--ghost">Zobacz portfolio</a>
-                </div>
-                <p class="hero__note">
-                    Dostępne terminy: <span>marzec – kwiecień 2026</span>
-                </p>
+<section class="hero">
+    <div class="container hero__inner">
+
+        <div class="hero__content">
+            <h1 class="hero__title">
+                Ekskluzywne zdjęcia dla wymagających
+            </h1>
+
+            <p class="hero__subtitle">
+                Sesje rodzinne, portretowe i ślubne w Słubicach i okolicach.
+            </p>
+
+            <div class="hero__actions">
+                <a href="#contact" class="btn btn--primary">Zarezerwuj sesję</a>
+                <a href="#portfolio" class="btn btn--ghost">Zobacz portfolio</a>
             </div>
 
-            <div class="hero__photo">
-                <img src="./photos/lena.jpg" alt="Fotograf w pracy" />
-            </div>
+            <p class="hero__note">
+                Dostępne terminy: <span>marzec – kwiecień 2026</span>
+            </p>
         </div>
-    </section>
+
+        <!-- 🔥 второе “крыло” флекса — фото -->
+        <div class="hero__photo">
+            <img src="./photos/lena.jpg" alt="Fotograf w pracy">
+        </div>
+
+    </div>
+</section>
+
 
     <!-- ===== PORTFOLIO ===== -->
     <section id="portfolio" class="section portfolio">
@@ -72,18 +82,15 @@
             <!-- сетка фото -->
             <div class="portfolio__grid">
                 <figure class="portfolio__item" data-category="family">
-                    <img src="img/portfolio1.jpg" alt="Sesja rodzinna" />
-                    <figcaption>Sesja rodzinna w plenerze</figcaption>
+                    <img src="./photos/difluid.JPEG" alt="Sesja rodzinna" />
                 </figure>
 
                 <figure class="portfolio__item" data-category="portrait">
-                    <img src="img/portfolio2.jpg" alt="Portret kobiecy" />
-                    <figcaption>Portret kobiecy w studio</figcaption>
+                    <img src="./photos/mercedes.jpg" alt="Portret kobiecy" />
                 </figure>
 
                 <figure class="portfolio__item" data-category="wedding">
-                    <img src="img/portfolio3.jpg" alt="Reportaż ślubny" />
-                    <figcaption>Reportaż ślubny</figcaption>
+                    <img src="./photos/roster.jpg" alt="Reportaż ślubny" />
                 </figure>
 
                 <!-- можно дублировать дальше -->
@@ -151,9 +158,9 @@
             <div class="testimonials__list">
                 <article class="testimonial">
                     <p class="testimonial__text">
-                        „Cudowna atmosfera i przepiękne zdjęcia. Elena ma niesamowite oko do detali!”
+                        „Лучший фотограф!🫶”
                     </p>
-                    <p class="testimonial__author">— Marta i Piotr</p>
+                    <p class="testimonial__author">— Рома</p>
                 </article>
 
                 <article class="testimonial">
@@ -218,6 +225,7 @@
         // автоматический год в футере
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+    <script src="./js/calendar.js"> </script>
 </body>
 
 </html>

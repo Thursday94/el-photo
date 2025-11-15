@@ -182,9 +182,7 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-    padding: 80px 0;
-    display: flex;
-    align-items: center;
+    padding: 80px 0 100px;
     background: linear-gradient(135deg, #fff 0%, #ffe8f0 40%, #f8d6e3 100%);
     position: relative;
     border-radius: 0 0 40px 40px;
@@ -204,14 +202,16 @@ body {
 
 .hero__inner {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 50px;
+        justify-content: space-between;
+        align-items: center;
+        gap: 50px;
+        max-width: 1100px;
+        margin: 0 auto;
 }
 
 .hero__content {
-    flex: 1;
     max-width: 560px;
+    flex: 1 1 55%;
 }
 
 .hero__title {
@@ -247,8 +247,6 @@ body {
             animation: heroFadeUp 1.2s ease-out forwards;
             animation-delay: 0.45s;
 }
-
-
 
 .hero__actions {
     display: flex;
@@ -290,9 +288,18 @@ body {
     font-weight: 600;
 }
 
+.hero__photo {
+    flex: 1 1 45%;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+
 .hero__photo img {
     width: 100%;
-    max-width: 500px;
+    max-width: 420px;
     border-radius: 16px;
     object-fit: cover;
             opacity: 0;
@@ -307,6 +314,7 @@ body {
         transform: translateY(0) scale(1);
     }
 }
+
 
 /* ===== BUTTONS ===== */
 .btn {
@@ -370,6 +378,103 @@ body {
     font-weight: 700;
 }
 
+/*=====Calendar Wrapper*/
+/* Контейнер */
+.calendar-wrapper {
+    max-width: 350px;
+    margin-top: 30px;
+}
+
+/* Заголовок */
+.calendar-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #d46f93;
+}
+
+.calendar-title.open::after {
+    transform: rotate(180deg);
+}
+
+/* Flatpickr общий стиль */
+.flatpickr-calendar {
+    background: #fff7fa;
+    border-radius: 16px;
+    border: 1px solid #f3d0dc;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* Дни */
+.flatpickr-day {
+    border-radius: 8px !important;
+    transition: 0.2s ease;
+}
+
+/* Hover premium */
+.flatpickr-day:hover {
+    background: #f4c4d6 !important;
+    color: white !important;
+}
+
+/* Забронированный день */
+.busy-day {
+    background: #d46f93 !important;
+    color: white !important;
+    border: none !important;
+    cursor: not-allowed !important;
+}
+
+/* Сегодня */
+.flatpickr-day.today {
+    background: #eac7d5 !important;
+    color: #000 !important;
+}
+
+.calendar-panel {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* когда открыт */
+.calendar-panel--open {
+    max-height: 380px;      /* достаточно, чтобы уместился календарь */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* курсор и стиль заголовка */
+.calendar-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: #d46f93;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: heroFadeUp 0.9s ease-out forwards;
+    /* та же анимация, что в hero */
+    animation-delay: 0.4s;
+}
+
+/* маленький индикатор-стрелочка (по желанию) */
+.calendar-title::after {
+    content: "▾";
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.calendar-panel--open ~ .calendar-title::after,
+.calendar-title.open::after {
+    transform: rotate(180deg);
+}
+
 /* ===== PORTFOLIO ===== */
 .portfolio__filters {
     display: flex;
@@ -396,20 +501,31 @@ body {
 
 .portfolio__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+
+    /* вот эти три строки — главное */
+    max-width: 1000px;
+    /* ширина блока с фото */
+    margin: 0 auto;
+    /* центрирует блок по странице */
+    justify-items: center;
+    /* сами карточки по центру внутри колонок */
 }
 
 .portfolio__item {
     overflow: hidden;
     border-radius: 12px;
     background: #fff;
+    transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .portfolio__item img {
     width: 100%;
     display: block;
     transition: 0.4s;
+        transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
 
 .portfolio__item:hover img {
