@@ -9,6 +9,7 @@
     <!-- Подключение Flatpickr для выбора даты -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <audio id="ui-sound" src="./sounds/click.mp3" preload="auto"></audio>
 
 </head>
 
@@ -225,6 +226,7 @@
         // автоматический год в футере
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+    <script src="./js/click.js"></script>
    </body>
 
 </html>

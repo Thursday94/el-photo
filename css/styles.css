@@ -77,29 +77,44 @@ body {
 .logo-main {
     margin-right: 8px;
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(-15px);
     color: #000;
     font-weight: 700;
-    animation: logoSlideIn 3.8s ease-out forwards;
+    animation: logoSlideIn 4.8s ease-out forwards;
     animation-delay: 0.3s;
+}
+
+.logo-main,
+.logo-sub {
+    text-shadow:
+        0 6px 16px rgba(0, 0, 0, 0.16),
+        0 2px 4px rgba(0, 0, 0, 0.12);
 }
 
 /* PHOTOGRAPHIA — выезд + перелив */
 .logo-sub {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(-15px);
     background: linear-gradient(90deg, #e38faa, #c46086, #e38faa);
     background-size: 200%;
+
+    /* градиентный текст */
+    background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+    -webkit-text-fill-color: transparent;
 
-    /* ДВЕ АНИМАЦИИ: появление + перелив */
+    /* 🔥 мягкое розовое свечение, независимо от прозрачного текста */
+    text-shadow:
+        0 4px 12px rgba(196, 96, 134, 0.6),
+        0 1px 3px rgba(0, 0, 0, 0.18);
+
+    /* ДВЕ АНИМАЦИИ: появление и перелив */
     animation-name: logoSlideIn, pinkFlow;
-    animation-duration: 0.8s, 4s;
+    animation-duration: 2.8s, 4s;
     animation-timing-function: ease-out, ease-in-out;
     animation-fill-mode: forwards, forwards;
     animation-delay: .65s, .5s;
-    /* сначала появление, потом перелив */
 }
 
 /* выезд вверх */
@@ -183,7 +198,7 @@ body {
 /* ===== HERO ===== */
 .hero {
     padding: 80px 0 100px;
-    background: linear-gradient(135deg, #fff 0%, #ffe8f0 40%, #f8d6e3 100%);
+    background: linear-gradient(180deg, #f9dce6 0%, #f3c8d8 100%);
     position: relative;
     border-radius: 0 0 40px 40px;
     animation: heroGlow 10s ease-in-out infinite alternate;
@@ -215,13 +230,19 @@ body {
 }
 
 .hero__title {
-    font-size: clamp(32px, 4.5vw, 50px);
-    line-height: 1.15;
+    font-size: clamp(42px, 5vw, 70px);
+    line-height: 1.03;
     font-weight: 700;
-    letter-spacing: 0.02em;
-    margin-bottom: 12px;
+    letter-spacing: -0.035em;
+    margin-bottom: 20px;
+    color: #0a0a0a;
 
-    /* 🔥 Анимация */
+    /* Vogue Shadow: длинная, мягкая, объёмная */
+    text-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.18),
+        0 2px 4px rgba(0, 0, 0, 0.12);
+
+    /* твоя анимация */
     opacity: 0;
     transform: translateY(20px);
     animation: heroFadeUp 1.2s ease-out forwards;
@@ -292,17 +313,54 @@ body {
     flex: 1 1 45%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.hero__photo::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    border-radius: 32px;
+    background: radial-gradient(circle,
+            rgba(200, 80, 120, 0.25) 0%,
+            rgba(200, 80, 120, 0.12) 35%,
+            transparent 75%);
+    filter: blur(45px);
+    opacity: 0.8;
+    z-index: 0;
 }
 
 .hero__photo img {
+    position: relative;
+    z-index: 1;
     width: 100%;
     max-width: 420px;
-    border-radius: 16px;
+    border-radius: 22px;
     object-fit: cover;
-            opacity: 0;
-            transform: translateY(30px) scale(1.02);
-            animation: heroPhotoIn 3s ease-out forwards;
-            animation-delay: 0.4s;
+
+    /* лёгкая премиальная тень */
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.18),
+        0 4px 10px rgba(0, 0, 0, 0.12);
+
+    /* чуть больше глубины цвета */
+    filter: saturate(1.02) contrast(1.03);
+
+    /* твоя анимация */
+    opacity: 0;
+    transform: translateY(30px) scale(1.02);
+    animation: heroPhotoIn 3s ease-out forwards;
+    animation-delay: 0.4s;
+
+    transition: transform 0.6s ease-out, box-shadow 0.6s ease-out, filter 0.6s ease-out;
+}
+
+.hero__photo:hover img {
+    transform: translateY(0) scale(1.035);
+    box-shadow:
+        0 26px 70px rgba(0, 0, 0, 0.25),
+        0 8px 20px rgba(0, 0, 0, 0.15);
+    filter: saturate(1.05) contrast(1.05);
 }
 
 @keyframes heroPhotoIn {
@@ -644,6 +702,18 @@ body {
     padding: 20px 0;
     text-align: center;
     color: #777;
+}
+
+/* Премиальное свечение логотипа (поверх всех стилей) */
+.logo-main,
+.logo-sub {
+    position: relative;
+    z-index: 1;
+    text-shadow:
+        0 0 18px rgba(227, 143, 170, 0.9),
+        /* розовое свечение */
+        0 3px 6px rgba(0, 0, 0, 0.22);
+    /* лёгкая тень вниз */
 }
 
 /*=========================================================================================================================*/
