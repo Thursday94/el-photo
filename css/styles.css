@@ -86,6 +86,7 @@ body {
 
 .logo-main,
 .logo-sub {
+    letter-spacing: 0.07em;
     text-shadow:
         0 6px 16px rgba(0, 0, 0, 0.16),
         0 2px 4px rgba(0, 0, 0, 0.12);
@@ -160,9 +161,9 @@ body {
 
 .nav__link {
     text-decoration: none;
-    color: #222;
+    color: #111;
     font-weight: 500;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.1em;
 
     padding: 6px 12px;
     border: 1px solid transparent;
@@ -197,12 +198,16 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-    padding: 80px 0 100px;
-    background: linear-gradient(180deg, #f9dce6 0%, #f3c8d8 100%);
+    padding: 50px 0 100px;
+    background: linear-gradient(135deg,
+            #f6c8d4,
+            #f4b6c9,
+            #f7cbd7,
+            #f3b6c9);
+    background-size: 800% 800%;
+    animation: heroGlow 8s ease-in-out infinite;
+    border-radius: 0 40px 40px 0;
     position: relative;
-    border-radius: 0 0 40px 40px;
-    animation: heroGlow 10s ease-in-out infinite alternate;
-    background-size: 200% 200%;
 }
 
 @keyframes heroGlow {
@@ -210,8 +215,12 @@ body {
         background-position: 0% 50%;
     }
 
-    100% {
+    50% {
         background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
     }
 }
 
@@ -257,16 +266,23 @@ body {
 }
 
 .hero__subtitle {
-    font-size: 18px;
-    color: #555;
-    /* мягкий серый вместо чисто чёрного */
-    margin: 15px 0 32px;
-    max-width: 36rem;
-    /* строка подзаголовка не будет слишком длинной */
-        opacity: 0;
-            transform: translateY(22px);
-            animation: heroFadeUp 1.2s ease-out forwards;
-            animation-delay: .4s;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.55);
+    /* мягкий премиальный серый */
+    margin: 18px 0 34px;
+    max-width: 38rem;
+
+    /* лёгкое премиальное свечение */
+    text-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.18),
+        0 0 25px rgba(0, 0, 0, 0.10);
+
+    /* анимация */
+    opacity: 0;
+    transform: translateY(22px);
+    animation: heroFadeUp 1.2s ease-out forwards;
+    animation-delay: .4s;
 }
 
 .hero__actions {
@@ -295,17 +311,18 @@ body {
 
 .hero__note {
     margin-top: 10px;
-    color: #555;
-        opacity: 0;
-            transform: translateY(28px);
-            animation: heroFadeUp 1.2s ease-out forwards;
-            animation-delay: 1.15s;
-            /* после кнопок */
+    color: #6e6e6e;
+    /* мягкий премиальный серый */
+    opacity: 0;
+    transform: translateY(28px);
+    animation: heroFadeUp 1.2s ease-out forwards;
+    animation-delay: 1.15s;
+    /* после кнопок */
 }
 
 .hero__note span {
-    color: #d97298;
-    /* нежно-розовый премиум */
+    color: #c06585;
+    /* нежно-розовый премиум (как подсветка лого) */
     font-weight: 600;
 }
 
@@ -433,102 +450,6 @@ body {
     font-weight: 700;
 }
 
-/*=====Calendar Wrapper*/
-/* Контейнер */
-.calendar-wrapper {
-    max-width: 350px;
-    margin-top: 30px;
-}
-
-/* Заголовок */
-.calendar-title {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #d46f93;
-}
-
-.calendar-title.open::after {
-    transform: rotate(180deg);
-}
-
-/* Flatpickr общий стиль */
-.flatpickr-calendar {
-    background: #fff7fa;
-    border-radius: 16px;
-    border: 1px solid #f3d0dc;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-}
-
-/* Дни */
-.flatpickr-day {
-    border-radius: 8px !important;
-    transition: 0.2s ease;
-}
-
-/* Hover premium */
-.flatpickr-day:hover {
-    background: #f4c4d6 !important;
-    color: white !important;
-}
-
-/* Забронированный день */
-.busy-day {
-    background: #d46f93 !important;
-    color: white !important;
-    border: none !important;
-    cursor: not-allowed !important;
-}
-
-/* Сегодня */
-.flatpickr-day.today {
-    background: #eac7d5 !important;
-    color: #000 !important;
-}
-
-.calendar-panel {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* когда открыт */
-.calendar-panel--open {
-    max-height: 380px;      /* достаточно, чтобы уместился календарь */
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* курсор и стиль заголовка */
-.calendar-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0 0 8px;
-    color: #d46f93;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    opacity: 0;
-    transform: translateY(12px);
-    animation: heroFadeUp 0.9s ease-out forwards;
-    /* та же анимация, что в hero */
-    animation-delay: 0.4s;
-}
-
-/* маленький индикатор-стрелочка (по желанию) */
-.calendar-title::after {
-    content: "▾";
-    font-size: 14px;
-    transition: transform 0.3s ease;
-}
-
-.calendar-panel--open ~ .calendar-title::after,
-.calendar-title.open::after {
-    transform: rotate(180deg);
-}
 
 /* ===== PORTFOLIO ===== */
 .portfolio__filters {
