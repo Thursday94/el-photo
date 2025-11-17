@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <audio id="ui-sound" src="./sounds/click.mp3" preload="auto"></audio>
+    <audio id="portfolio-sound" src="./sounds/portfolio.mp3" preload="auto"></audio>
+    <audio id="contact-sound" src="./sounds/contact.mp3" preload="auto"></audio>
+
 
 </head>
 
@@ -46,8 +49,10 @@
             </p>
 
             <div class="hero__actions">
-                <a href="#contact" class="btn btn--primary">Zarezerwuj sesję</a>
-                <a href="#portfolio" class="btn btn--ghost">Zobacz portfolio</a>
+                <a href="#contact" class="btn btn--primary contact-sound">Zarezerwuj sesję</a>
+
+                <a href="#portfolio" class="btn btn--ghost portfolio-sound">Zobacz portfolio</a>
+
             </div>
 
             <p class="hero__note">
@@ -163,12 +168,6 @@
                     </p>
                     <p class="testimonial__author">— Рома</p>
                 </article>
-
-                <article class="testimonial">
-                    <p class="testimonial__text">
-                        „Pierwsza sesja, na której naprawdę czuliśmy się swobodnie. Zdjęcia to bajka.”
-                    </p>
-                    <p class="testimonial__author">— Anna z rodziną</p>
                 </article>
             </div>
         </div>

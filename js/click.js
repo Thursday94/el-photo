@@ -1,16 +1,28 @@
 const sound = document.getElementById("ui-sound");
-
-// Мягкий премиальный звук
 sound.volume = 0.25;
 
-document.addEventListener("click", (e) => {
-    const isButton =
-        e.target.closest("button") ||
-        e.target.closest("a") ||
-        e.target.closest(".btn");
+const portfolioSound = document.getElementById("portfolio-sound");
+const contactSound = document.getElementById("contact-sound");
 
-    if (isButton) {
-        sound.currentTime = 0;
-        sound.play().catch(() => {});
-    }
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest("button, a, .btn");
+  if (!btn) return;
+
+  // Особенный звук №1 — portfolio
+  if (btn.classList.contains("portfolio-sound")) {
+    portfolioSound.currentTime = 0;
+    portfolioSound.play().catch(() => {});
+    return;
+  }
+
+  // Особенный звук №2 — contact
+  if (btn.classList.contains("contact-sound")) {
+    contactSound.currentTime = 0;
+    contactSound.play().catch(() => {});
+    return;
+  }
+
+  // Общий звук
+  sound.currentTime = 0;
+  sound.play().catch(() => {});
 });
