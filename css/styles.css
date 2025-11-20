@@ -460,12 +460,16 @@ body {
 }
 
 .portfolio__filter {
-    padding: 8px 18px;
-    border: 1px solid #ccc;
-    background: white;
-    border-radius: 20px;
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 30px;
+    background: #f2f2f2;
+    border: none;
     cursor: pointer;
-    transition: 0.3s;
+    font-size: 15px;
+    text-decoration: none;
+    /* ← чтобы не было подчёркивания */
+    color: inherit;
 }
 
 .portfolio__filter:hover,
@@ -637,6 +641,209 @@ body {
     /* лёгкая тень вниз */
 }
 
+/*====== Page portfolio-rodzinne.html =====*/
+.portfolio-hero {
+    padding: 10px 0 10px;
+        background: linear-gradient(135deg,
+                #f6c8d4,
+                #f4b6c9,
+                #f7cbd7,
+                #f3b6c9);
+        background-size: 800% 800%;
+        animation: heroGlow 8s ease-in-out infinite;
+        border-radius: 40px 40px 40px 40px;
+        position: relative;
+    }
+    
+    @keyframes heroGlow {
+        0% {
+            background-position: 0% 50%;
+        }
+    
+        50% {
+            background-position: 100% 50%;
+        }
+    
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+
+.portfolio_hero__title {
+    font-size: clamp(42px, 5vw, 70px);
+    line-height: 1.03;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    margin-bottom: 20px;
+    color: #0a0a0a;
+
+    /* Vogue Shadow: длинная, мягкая, объёмная */
+    text-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.18),
+        0 2px 4px rgba(0, 0, 0, 0.12);
+
+    /* твоя анимация */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroFadeUp 1.2s ease-out forwards;
+    animation-delay: 0.2s;
+    text-align: center;
+}
+
+@keyframes heroFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.portfolio_hero__subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.55);
+    /* мягкий премиальный серый */
+    margin: 18px 0 34px;
+    max-width: 38rem;
+
+    /* лёгкое премиальное свечение */
+    text-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.18),
+        0 0 25px rgba(0, 0, 0, 0.10);
+
+    /* анимация */
+    opacity: 0;
+    transform: translateY(22px);
+    animation: heroFadeUp 1.2s ease-out forwards;
+    animation-delay: .4s;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.portfolio-gallery {
+    padding: 40px 0 80px;
+}
+
+.portfolio-gallery__grid {
+    column-count: 3;
+    /* сколько колонок на десктопе */
+    column-gap: 24px;
+    /* расстояние между колонками */
+}
+
+.portfolio-item {
+    display: inline-block;
+    margin-bottom: 24px;
+    width: 100%;
+    break-inside: avoid;
+    /* чтобы карточки не разрывались между колонками */
+}
+
+.portfolio-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.18);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+}
+
+/* hover-эффект, чтобы было «дорого» */
+
+.portfolio-item:hover img {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.25);
+    filter: saturate(1.05);
+}
+
+/* адаптив — на планшете 2 колонки, на телефоне 1 */
+
+@media (max-width: 1024px) {
+    .portfolio-gallery__grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 640px) {
+    .portfolio-gallery__grid {
+        column-count: 1;
+    }
+}
+
+/* ==== LIGHTBOX ==== */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+}
+
+.lightbox--active {
+    display: flex;
+}
+
+.lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+}
+
+.lightbox__image {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 16px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    animation: lightbox-pop .35s ease;
+}
+
+@keyframes lightbox-pop {
+    from {
+        transform: scale(.85);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.lightbox__close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: 38px;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* ==== Анимация появления ==== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /*=========================================================================================================================*/
 /* ===== RESPONSIVE ===== */
 /* ===== TABLET (до 900px) ===== */
@@ -746,7 +953,6 @@ body {
 }
 
 /*=========================================================================================================================*/
-/* ===== PHONE (до 600px) ===== */
 /* ===== PHONE (до 600px) ===== */
 @media (max-width: 600px) {
     .header {
