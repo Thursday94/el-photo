@@ -71,7 +71,6 @@
         <div class="container">
             <header class="section__header">
                 <h2>Portfolio</h2>
-                <p>Wybrane kadry z ostatnich sesji.</p>
             </header>
 
             <!-- фильтры по категориям -->
@@ -172,43 +171,101 @@
     <!-- ===== KONTAKT ===== -->
     <section id="contact" class="section contact">
         <div class="container contact__inner">
+    
+            <!-- Левый блок — контакты -->
             <div class="contact__info">
                 <h2>Kontakt</h2>
                 <p>Masz pytania lub chcesz zarezerwować sesję? Napisz lub zadzwoń.</p>
                 <ul class="contact__list">
-                    <li><strong>E-mail:</strong> <a
-                            href="mailto:kontakt@elena-photo.pl">kontakt@elena-photo.pl</a></li>
-                    <li><strong>Tel.:</strong> <a href="tel:+48574952125">+48 574 952 125</a></li>
-                    <li><strong>Instagram:</strong> <a href="https://www.instagram.com/elenaasudas?igsh=a2xiODNibTMyemI3"
-                            target="_blank">@el_photo</a></li>
+                    <li>
+                        <strong>E-mail:</strong>
+                        <a href="mailto:kontakt@elena-photo.pl">kontakt@elena-photo.pl</a>
+                    </li>
+                
+                    <li>
+                        <strong>Tel.:</strong>
+                        <a href="tel:+48574952125">+48 574 952 125</a>
+                    </li>
+                
+                    <li>
+                        <strong>Instagram:</strong>
+                        <a href="#">@el_photo</a>
+                    </li>
+                
+                    <li>
+                        <strong>Facebook:</strong>
+                        <a href="#">@el_photo</a>
+                    </li>
                 </ul>
+
             </div>
-
+    
+            <!-- Правый блок — форма с иконками -->
             <form class="contact__form">
-                <label>
-                    Imię i nazwisko
-                    <input type="text" name="name" required />
+    
+                <label class="contact__field">
+                    <span class="contact__field-label">Imię i nazwisko</span>
+                    <div class="contact__field-inner">
+                        <span class="contact__field-icon" aria-hidden="true">
+                            <!-- иконка пользователя -->
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="8" r="3.1" />
+                                <path d="M6 18c0-2.9 2.6-4.4 6-4.4s6 1.5 6 4.4" />
+                            </svg>
+                        </span>
+                        <input type="text" name="name" required />
+                    </div>
                 </label>
-
-                <label>
-                    E-mail
-                    <input type="email" name="email" required />
+    
+                <label class="contact__field">
+                    <span class="contact__field-label">E-mail</span>
+                    <div class="contact__field-inner">
+                        <span class="contact__field-icon" aria-hidden="true">
+                            <!-- иконка конверта -->
+                            <svg viewBox="0 0 24 24">
+                                <rect x="4" y="6" width="16" height="12" rx="2" ry="2" />
+                                <path d="M5 7l7 6 7-6" />
+                            </svg>
+                        </span>
+                        <input type="email" name="email" required />
+                    </div>
                 </label>
-
-                <label>
-                    Temat
-                    <input type="text" name="subject" />
+    
+                <label class="contact__field">
+                    <span class="contact__field-label">Temat</span>
+                    <div class="contact__field-inner">
+                        <span class="contact__field-icon" aria-hidden="true">
+                            <!-- иконка темы / карандаш -->
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 18l3.2-.6L18 8.6 15.4 6 6.6 14.8 6 18z" />
+                                <path d="M13.7 6.3l3.9 3.9" />
+                            </svg>
+                        </span>
+                        <input type="text" name="subject" />
+                    </div>
                 </label>
-
-                <label>
-                    Wiadomość
-                    <textarea name="message" rows="4" required></textarea>
+    
+                <label class="contact__field">
+                    <span class="contact__field-label">Wiadomość</span>
+                    <div class="contact__field-inner contact__field-inner--textarea">
+                        <span class="contact__field-icon" aria-hidden="true">
+                            <!-- иконка сообщения -->
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 5h14v10H8l-3 3V5z" />
+                                <path d="M9 9h6M9 12h4" />
+                            </svg>
+                        </span>
+                        <textarea name="message" rows="4" required></textarea>
+                    </div>
                 </label>
-
+    
                 <button type="submit" class="btn btn--primary">Wyślij wiadomość</button>
             </form>
+    
         </div>
     </section>
+
+
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
@@ -216,6 +273,17 @@
             <p>© <span id="year"></span> Elena Photografia . Wszelkie prawa zastrzeżone.</p>
         </div>
     </footer>
+
+    <button class="scroll-top" aria-label="Wróć na górę">
+        <span class="scroll-top__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 19V5" stroke="#222" stroke-width="2" stroke-linecap="round" />
+                <path d="M5 12L12 5L19 12" stroke="#222" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </span>
+    </button>
+
+    <script src="./js/scroll-top.js" defer></script>
 
     <script>
         // автоматический год в футере
