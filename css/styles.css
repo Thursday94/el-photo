@@ -532,6 +532,62 @@ body {
     border-color: #efc5d6;
 }
 
+/* карточки категорий */
+.portfolio__filters--cards {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.portfolio__filter--card {
+    width: 240px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 22px;
+    text-align: center;
+    text-decoration: none;
+    color: #222;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    border: 1px solid #efefef;
+    transition: .3s ease;
+}
+
+.portfolio__filter--card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 34px rgba(241, 155, 181, 0.25);
+    border-color: #f19bb5;
+}
+
+/* иконки категорий */
+.portfolio__filter-icon {
+    width: 52px;
+    margin-bottom: 12px;
+    opacity: 0.9;
+}
+
+/* заголовок внутри карточки */
+.portfolio__filter-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* описание */
+.portfolio__filter-desc {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 14px;
+}
+
+/* ссылка */
+.portfolio__filter-link {
+    font-weight: 600;
+    font-size: 16px;
+    color: #f19bb5;
+}
+
 .portfolio__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1051,15 +1107,11 @@ body {
 /*====== Page portfolio-rodzinne.html =====*/
 .portfolio-hero {
     padding: 10px 0 10px;
-        background: linear-gradient(135deg,
-                #f6c8d4,
-                #f4b6c9,
-                #f7cbd7,
-                #f3b6c9);
-        background-size: 800% 800%;
-        animation: heroGlow 8s ease-in-out infinite;
-        border-radius: 40px 40px 40px 40px;
-        position: relative;
+    border-radius: 28px;
+    background-size: 800% 800%;
+    animation: heroGlow 8s ease-in-out infinite;
+    border-radius: 0px 20px 0px 0px;
+    position: relative;
     }
     
     @keyframes heroGlow {
@@ -1075,6 +1127,24 @@ body {
             background-position: 0% 50%;
         }
     }
+
+        .back-btn{
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: rgba(0, 0, 0, 0.55);
+            padding: 6px 12px;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+    
+        .back-btn:hover {
+            border-color: #e38faa;
+            border-radius: 100px;
+            color: #e38faa;
+            background: rgba(227, 143, 170, 0.08);
+        }
 
 
 .portfolio_hero__title {
