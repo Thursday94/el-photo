@@ -24,21 +24,25 @@ body {
 }
 
 /* ===== HEADER ===== */
+/* header */
 .header {
     width: 100%;
     padding: 20px 0;
     position: sticky;
     top: 0;
-    z-index: 10;
-
+    z-index: 1000;
+    /* чуть выше, чтобы перекрывать модалки/меню */
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-
     background: rgba(255, 255, 255, 0.6);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    /* переход фона для плавного появления при скролле */
+    transition: background-color 240ms ease, box-shadow 240ms ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* плавное появление всей шапки */
+/* inner */
 .header__inner {
     display: flex;
     justify-content: space-between;
@@ -48,8 +52,10 @@ body {
     transform: translateY(-8px);
     animation: glassFade 0.9s ease-out forwards;
     animation-delay: 0.3s;
+    will-change: opacity, transform;
 }
 
+/* анимация появления */
 @keyframes glassFade {
     from {
         opacity: 0;
@@ -62,63 +68,54 @@ body {
     }
 }
 
-/* ===== LOGO ===== */
+/* LOGO */
 .logo {
     display: inline-flex;
     align-items: center;
     gap: 4px;
     text-decoration: none;
     color: inherit;
-    font-size: 44px;
+    font-size: clamp(26px, 4.5vw, 44px);
+    /* responsive size */
     font-weight: 600;
+    line-height: 1;
 }
 
-/* ELENA — отдельная анимация */
+/* основная часть логотипа */
 .logo-main {
-    margin-right: 8px;
+    margin-right: 10px;
     opacity: 0;
-    transform: translateY(-15px);
-    color: #000;
-    font-weight: 700;
-    animation: logoSlideIn 4.8s ease-out forwards;
-    animation-delay: 0.3s;
+    transform: translateY(-12px);
+    color: #111111;
+    font-weight: 550;
+    letter-spacing: 0.04em;
+    animation: logoSlideIn 0.7s ease-out forwards;
+    animation-delay: 0.2s;
+    will-change: transform, opacity;
 }
 
+/* общий стили для логотипа */
 .logo-main,
 .logo-sub {
     letter-spacing: 0.07em;
     text-shadow:
-        0 6px 16px rgba(0, 0, 0, 0.16),
-        0 2px 4px rgba(0, 0, 0, 0.12);
+        0 6px 16px rgba(0, 0, 0, 0.12),
+        0 2px 4px rgba(0, 0, 0, 0.10);
 }
 
-/* PHOTOGRAPHIA — выезд + перелив */
+/* подзаголовок логотипа */
 .logo-sub {
     opacity: 0;
-    transform: translateY(-15px);
-    background: linear-gradient(90deg, #e38faa, #c46086, #e38faa);
-    background-size: 200%;
-
-    /* градиентный текст */
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-
-    /* 🔥 мягкое розовое свечение, независимо от прозрачного текста */
-    text-shadow:
-        0 4px 12px rgba(196, 96, 134, 0.6),
-        0 1px 3px rgba(0, 0, 0, 0.18);
-
-    /* ДВЕ АНИМАЦИИ: появление и перелив */
-    animation-name: logoSlideIn, pinkFlow;
-    animation-duration: 2.8s, 4s;
-    animation-timing-function: ease-out, ease-in-out;
-    animation-fill-mode: forwards, forwards;
-    animation-delay: .65s, .5s;
+    transform: translateY(-12px);
+    color: #111111;
+    font-weight: 450;
+    letter-spacing: 0.15em;
+    text-shadow: none;
+    animation: logoSlideIn 0.9s ease-out forwards;
+    animation-delay: 0.35s;
 }
 
-/* выезд вверх */
+/* анимация логотипа */
 @keyframes logoSlideIn {
     from {
         opacity: 0;
@@ -131,8 +128,8 @@ body {
     }
 }
 
-/* плавный перелив розового */
-@keyframes pinkFlow {
+/* нейтральный плавный градиент — оставил, но без автозапуска по умолчанию */
+@keyframes neutralFlow {
     0% {
         background-position: 0% 50%;
     }
@@ -146,12 +143,92 @@ body {
     }
 }
 
-/* сами ключевые кадры */
-@keyframes logoSlideIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
+/* адаптивность: уменьшение padding и уменьшение shadow на маленьких экранах */
+@media (max-width: 640px) {
+    .header {
+        padding: 12px 0;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
     }
+
+    .logo {
+        font-size: clamp(20px, 6vw, 32px);
+    }
+
+    .logo-main,
+    .logo-sub {
+        letter-spacing: 0.02em;
+    }
+
+    .header__inner {
+        animation-delay: 0.12s;
+    }
+
+    /* чуть быстрее для мобильных */
+}
+
+/* снизить нагрузку на устройства с низким DPR / слабым GPU */
+@media (prefers-reduced-data: reduce),
+(max-device-pixel-ratio: 1.5) {
+    .header {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.95);
+    }
+}
+
+/* уважать настройки пользователя по motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .header__inner,
+    .logo-main,
+    .logo-sub {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* accessibility: skip link (скрытая по умолчанию, показывается при фокусе) */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.skip-link:focus {
+    left: 12px;
+    top: 12px;
+    width: auto;
+    height: auto;
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    z-index: 2000;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+/* контрастность: в случае размещения header поверх изображения — дать опцию затемнения */
+.header--dark-bg {
+    background: linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.45));
+    color: #0b0b0b;
+}
+
+.header--overlay {
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    box-shadow: none;
+}
+
+/* optional: smoother GPU rendering */
+.header,
+.logo {
+    transform: translateZ(0);
 }
 
 .nav {
@@ -160,279 +237,496 @@ body {
 }
 
 .nav__link {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: #2B2B2B;
     text-decoration: none;
-    color: #111;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-
-    padding: 6px 12px;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    transition: 0.3s;
+    padding: 8px 0;
+    position: relative;
+    transition: color .25s ease;
 }
 
+/* Ультратонкая линия — почти невидимая */
+.nav__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 0%;
+    height: 0.5px;
+    /* ⬅ самый премиальный эффект */
+    background: #000000;
+    /* тонкая чёрная линия */
+    transition: width .24s ease;
+}
+
+/* При ховере — появление линии + чёрный цвет текста */
 .nav__link:hover {
-    border-color: #e38faa;
-    border-radius: 100px;
-    color: #e38faa;
-    background: rgba(227, 143, 170, 0.08);
+    color: #000000;
+}
+
+.nav__link:hover::after {
+    width: 100%;
 }
 
 .nav__link--primary {
-    padding: 6px 18px;
-    margin-left: 6px;
-    background: #e38faa;
-    color: white !important;
-    border-radius: 999px;
-    font-weight: 600;
-    border: none;
-    transition: 0.25s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 8px 26px;
+        border-radius: 4px;
+        /* Dior/Chanel используют маленький радиус */
+        background: #FFFFFF;
+        color: #111111;
+        border: 1px solid #111111;
+    
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    
+        transition: all 0.25s ease;
 }
 
 .nav__link--primary:hover {
-    background: #d77298;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(215, 114, 152, 0.35);
+    background: #111111;
+        color: #FFFFFF;
+        border-color: #111111;
+        border-radius: 4px;
+}
+
+.nav__link--primary::after {
+    display: none !important;
+}
+
+/* ===== HEADER: ADAPTIVE ===== */
+
+/* Планшеты, ноутбуки поуже */
+@media (max-width: 1024px) {
+    .header {
+        padding: 14px 0;
+    }
+
+    .logo {
+        font-size: 34px;
+    }
+
+    .nav {
+        gap: 16px;
+    }
+
+    .nav__link {
+        font-size: 14px;
+        letter-spacing: 0.10em;
+    }
+
+    .nav__link--primary {
+        padding: 6px 20px;
+        font-size: 12px;
+        letter-spacing: 0.10em;
+    }
+}
+
+/* Мобильные и маленькие планшеты */
+@media (max-width: 720px) {
+    .header {
+        padding: 10px 0;
+        background: rgba(255, 255, 255, 0.9);
+        /* чуть плотнее фон, чтобы всё читалось */
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .header__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    .nav {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+    }
+
+    .nav__link {
+        font-size: 13px;
+        letter-spacing: 0.09em;
+        padding: 4px 0;
+    }
+
+    .nav__link--primary {
+        margin-left: auto;
+        /* уедет вправо */
+        padding: 6px 18px;
+        font-size: 12px;
+    }
+}
+
+/* Совсем маленькие экраны */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 24px;
+    }
+
+    .nav {
+        justify-content: flex-start;
+    }
+
+    .nav__link--primary {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        margin-left: 0;
+        margin-top: 6px;
+    }
 }
 
 /* ===== HERO ===== */
+/* ===== HERO ===== */
 .hero {
-    padding: 50px 0 100px;
-    background: linear-gradient(135deg,
-            #f6c8d4,
-            #f4b6c9,
-            #f7cbd7,
-            #f3b6c9);
-    background-size: 800% 800%;
-    animation: heroGlow 8s ease-in-out infinite;
-    border-radius: 0 40px 40px 0;
-    position: relative;
-}
-
-@keyframes heroGlow {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+    background: #F2F1EF;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.03);
+    border-radius: 32px;
+    margin-top: 32px;
+    padding: 50px 72px 80px;
 }
 
 .hero__inner {
     display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 50px;
-        max-width: 1100px;
-        margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
 }
 
+/* Левая колонка */
 .hero__content {
     max-width: 560px;
-    flex: 1 1 55%;
 }
 
+/* Заголовок — чуть тоньше, fashion */
 .hero__title {
-    font-size: clamp(42px, 5vw, 70px);
-    line-height: 1.03;
-    font-weight: 700;
-    letter-spacing: -0.035em;
-    margin-bottom: 20px;
-    color: #0a0a0a;
-
-    /* Vogue Shadow: длинная, мягкая, объёмная */
-    text-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.18),
-        0 2px 4px rgba(0, 0, 0, 0.12);
-
-    /* твоя анимация */
+    font-size: 60px;
+    font-weight: 520;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: #111111;
+    margin-bottom: 16px;
     opacity: 0;
-    transform: translateY(20px);
-    animation: heroFadeUp 1.2s ease-out forwards;
-    animation-delay: 0.2s;
+    transform: translateY(22px);
+    animation: heroTitleFade 1.2s ease-out forwards;
+    animation-delay: 0.25s;
 }
 
-@keyframes heroFadeUp {
-    to {
+@keyframes heroTitleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    100% {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
+/* Подзаголовок — лёгкий, редакционный */
 .hero__subtitle {
     font-size: 20px;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.55);
-    /* мягкий премиальный серый */
-    margin: 18px 0 34px;
-    max-width: 38rem;
-
-    /* лёгкое премиальное свечение */
-    text-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.18),
-        0 0 25px rgba(0, 0, 0, 0.10);
-
-    /* анимация */
+    font-weight: 300;
+    color: #444444;
+    letter-spacing: 0.02em;
+    margin-bottom: 32px;
     opacity: 0;
-    transform: translateY(22px);
-    animation: heroFadeUp 1.2s ease-out forwards;
-    animation-delay: .4s;
+    transform: translateY(18px);
+    animation: heroSubtitleFade 1.3s ease-out forwards;
+    animation-delay: 0.45s;
+}
+
+@keyframes heroSubtitleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Кнопка в стиле Dior/Chanel */
+.hero .btn--primary {
+    padding: 10px 28px;
+    border-radius: 6px;
+    /*background: #FFFFFF;*/
+    background: #111111;
+    border: 1px solid #111111;
+    /*color: #111111;*/
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background .25s ease, color .25s ease, border-color .25s ease;
+}
+
+.hero .btn--primary:hover {
+    background: #FFFFFF;
+    color: #111111;
+    border-color: #111111;
 }
 
 .hero__actions {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    /* чтобы на телефоне могли переноситься */
-}
-
-.hero__actions .btn:nth-child(1) {
     opacity: 0;
-    transform: translateY(25px);
-    animation: heroFadeUp 1.2s ease-out forwards;
-    animation-delay: 0.65s;
-    /* первая появляется раньше */
+    transform: translateY(18px);
+    animation: heroFadeButton 1.25s ease-out forwards;
+    animation-delay: 0.55s;
 }
 
-.hero__actions .btn:nth-child(2) {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: heroFadeUp 1.2s ease-out forwards;
-    animation-delay: 0.9s;
-    /* вторая появляется позже */
+@keyframes heroFadeButton {
+    0% {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/* Примечание с датами */
 .hero__note {
-    margin-top: 10px;
-    color: #6e6e6e;
-    /* мягкий премиальный серый */
-    opacity: 0;
-    transform: translateY(28px);
-    animation: heroFadeUp 1.2s ease-out forwards;
-    animation-delay: 1.15s;
-    /* после кнопок */
+    margin-top: 24px;
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0.03em;
+        opacity: 0;
+            transform: translateY(14px);
+            animation: heroFadeNote 1.3s ease-out forwards;
+            animation-delay: 0.75s;
 }
 
 .hero__note span {
-    color: #c06585;
-    /* нежно-розовый премиум (как подсветка лого) */
-    font-weight: 600;
+    font-weight: 500;
+    color: #B6A99A;
+        opacity: 0;
+            transform: translateY(14px);
+            animation: heroFadeNote 1.3s ease-out forwards;
+            animation-delay: 0.75s;
+    /* аккуратный taupe-акцент вместо ярко-розового */
 }
 
-.hero__photo {
-    flex: 1 1 45%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+@keyframes heroFadeNote {
+    0% {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-.hero__photo::before {
-    content: "";
-    position: absolute;
-    inset: -40px;
-    border-radius: 32px;
-    background: radial-gradient(circle,
-            rgba(200, 80, 120, 0.25) 0%,
-            rgba(200, 80, 120, 0.12) 35%,
-            transparent 75%);
-    filter: blur(45px);
-    opacity: 0.8;
-    z-index: 0;
+
+/* Фото справа */
+.hero__photo {
+    flex: 0 0 420px;
 }
 
 .hero__photo img {
-    position: relative;
-    z-index: 1;
     width: 100%;
-    max-width: 440px;
-    border-radius: 22px;
+    display: block;
+    border-radius: 24px;
     object-fit: cover;
-
-    /* лёгкая премиальная тень */
     box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.18),
-        0 4px 10px rgba(0, 0, 0, 0.12);
-
-    /* чуть больше глубины цвета */
-    filter: saturate(1.02) contrast(1.03);
-
-    /* твоя анимация */
+        0 50px 80px rgba(0, 0, 0, 0.12),
+        0 15px 30px rgba(0, 0, 0, 0.06),
+        0 5px 15px rgba(0, 0, 0, 0.04);
     opacity: 0;
-    transform: translateY(30px) scale(1.02);
-    animation: heroPhotoIn 3s ease-out forwards;
-    animation-delay: 0.4s;
-
-    transition: transform 0.6s ease-out, box-shadow 0.6s ease-out, filter 0.6s ease-out;
+    transform: translateY(26px) scale(1.02);
+    animation: heroFadePhoto 1.4s ease-out forwards;
+    animation-delay: 0.3s;
 }
 
-.hero__photo:hover img {
-    transform: translateY(0) scale(1.035);
-    box-shadow:
-        0 26px 70px rgba(0, 0, 0, 0.25),
-        0 8px 20px rgba(0, 0, 0, 0.15);
-    filter: saturate(1.05) contrast(1.05);
-}
+@keyframes heroFadePhoto {
+    0% {
+        opacity: 0;
+        transform: translateY(26px) scale(1.02);
+    }
 
-@keyframes heroPhotoIn {
-    to {
+    100% {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
 }
 
+/* Адаптив */
+@media (max-width: 900px) {
+    .hero {
+        padding: 48px 24px 56px;
+        border-radius: 24px;
+    }
 
-/* ===== BUTTONS ===== */
+    .hero__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .hero__title {
+        font-size: 40px;
+    }
+
+    .hero__photo {
+        width: 100%;
+        flex: none;
+    }
+}
+
+/* Ещё более узкие экраны — планшеты / большие телефоны */
+@media (max-width: 720px) {
+    .hero {
+        margin-top: 24px;
+        padding: 36px 20px 44px;
+        border-radius: 20px;
+    }
+
+    .hero__inner {
+        gap: 28px;
+    }
+
+    .hero__title {
+        font-size: 32px;
+        line-height: 1.1;
+    }
+
+    .hero__subtitle {
+        font-size: 18px;
+        margin-bottom: 24px;
+    }
+
+    .hero .btn--primary {
+        padding: 9px 24px;
+        font-size: 13px;
+        letter-spacing: 0.10em;
+    }
+
+    .hero__note {
+        font-size: 13px;
+    }
+}
+
+/* Телефоны */
+@media (max-width: 480px) {
+    .hero {
+        padding: 28px 16px 36px;
+        border-radius: 16px;
+    }
+
+    .hero__inner {
+        align-items: stretch;
+    }
+
+    .hero__content {
+        max-width: 100%;
+    }
+
+    .hero__title {
+        font-size: 26px;
+    }
+
+    .hero__subtitle {
+        font-size: 16px;
+    }
+
+    /* Кнопка — по центру и чуть шире */
+    .hero__actions {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .hero .btn--primary {
+        padding: 9px 22px;
+        font-size: 12px;
+    }
+
+    .hero__photo {
+        width: 100%;
+        flex: none;
+    }
+}
+
+/* ===== BUTTON SYSTEM (premium) ===== */
+
 .btn {
-    padding: 12px 28px;
-    border-radius: 999px;
-    /* красивые "капсулы" */
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-    border: none;
-    cursor: pointer;
-    transition: 0.25s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+    padding: 10px 26px;
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    border: 1px solid transparent;
+    background: transparent;
+    color: #111111;
+
+    cursor: pointer;
+    transition:
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .18s ease;
 }
 
+/* PRIMARY — стиль Dior / Chanel (как hero + Kontakt) */
 .btn--primary {
-    background: #e38faa;
-    color: #fff;
+    background: #111111;
+    border-color: #111111;
+    color: #FFFFFF;
+    box-shadow: none;
 }
 
 .btn--primary:hover {
-    background: #d77298;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(215, 114, 152, 0.35);
+    background: #FFFFFF;
+    color: #111111;
+    border-color: #111111;
 }
 
-.btn--ghost {
-    border: 2px solid #e38faa;
-    color: #efc5d6;
+/* SECONDARY — тёмная заполненная (для важных акцентов) */
+.btn--secondary {
+    background: #111111;
+    border-color: #111111;
+    color: #FFFFFF;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
+.btn--secondary:hover {
+    background: #2B2B2B;
+    border-color: #2B2B2B;
+}
+
+/* GHOST — только текст, максимально лёгкая */
 .btn--ghost {
+    border-color: transparent;
     background: transparent;
-    border: 2px solid #e38faa;
-    color: #e38faa;
+    color: #111111;
     box-shadow: none;
 }
 
 .btn--ghost:hover {
-    background: #e38faa;
-    color: #fff;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(215, 114, 152, 0.35);
+    color: #000000;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
 }
 
 /* ===== SECTIONS ===== */
@@ -757,20 +1051,59 @@ body {
 
 .about {
     padding: 40px 0 40px 0;
+    position: relative;
+    overflow: hidden;
+    scroll-margin-top: 200px;
+    margin-bottom: 80px;
+}
+
+.omnie_title {
+    font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        text-align: center;
+        margin-bottom: 32px;
+        color: #111;
+}
+.about__video {
+    position: absolute;
+    inset: 0;
+    /* top:0; right:0; bottom:0; left:0; */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    /* можно смещать: "center 20%" */
+    z-index: 0;
+    /* видео под контентом */
+    opacity: 0.75;
+    /* уменьшай/увеличивай под настроение */
+    pointer-events: none;
+    /* чтобы клики проходили на кнопки */
 }
 
 .about__inner {
     display: flex;
-    
     justify-content: center;
     gap: 60px;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     align-items: flex-start;
     padding-top: 8px;
+
+    position: relative;
+    z-index: 1;
 }
 
-/* Фото с премиальным розовым свечением */
+.about__content {
+    font-size: 58px;
+    font-weight: 700;
+    color: black;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+
 .about__photo {
     position: relative;
     flex: 0 0 420px;
@@ -786,7 +1119,6 @@ body {
             0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
-/*сияние вокруг фото */
 .about__photo::before {
     content: "";
     position: absolute;
@@ -798,6 +1130,7 @@ body {
             rgba(0, 0, 0, 0) 70%);
     z-index: -1;
 }
+   
 
 /* Текстовая часть */
 .about__content {
