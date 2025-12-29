@@ -1453,7 +1453,7 @@ body {
     padding: 40px 0;
     position: relative;
     overflow: hidden;
-    scroll-margin-top: 35px;
+    scroll-margin-top: 40px;
     margin-bottom: 80px;
     background: #f3f2f0
 }
@@ -1544,24 +1544,140 @@ body {
     display: inline-block;
 }
 
-/* testimonials (оставил как было) */
-.testimonials__list {
-    display: grid;
-    gap: 20px;
-}
+/* ===== TESTIMONIALS SECTION ===== */
 
-.testimonial {
+.testimonials {
+    padding: 60px 0;
     background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
-.testimonial__author {
-    margin-top: 10px;
+.section__header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section__header h2 {
+    font-size: 42px;
     font-weight: 600;
 }
 
+/* ===== SWIPER ===== */
+
+.testimonials-swiper {
+    padding: 0 16px 72px;
+    /* запас под точки */
+}
+
+.testimonials-swiper .swiper-wrapper {
+    align-items: stretch;
+}
+
+.swiper {
+    width: 100%;
+}
+
+.swiper-slide {
+    height: auto;
+}
+
+/* ===== CARD ===== */
+
+.testimonial {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ===== IMAGE ===== */
+
+.testimonial__image {
+    width: 100%;
+    max-height: 240px;
+    object-fit: contain;
+
+    background: #fff;
+    border-radius: 20px;
+    padding: 14px;
+
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    scroll-margin-top: 100px;
+}
+
+/* ===== AUTHOR ===== */
+
+.testimonial__author {
+    font-size: 13px;
+    opacity: 0.55;
+    text-align: center;
+}
+
+/* ===== PAGINATION ===== */
+
+.testimonials-swiper .swiper-pagination {
+    bottom: 12px;
+}
+
+.testimonials-swiper .swiper-pagination-bullet {
+    background: #000;
+    opacity: 0.25;
+}
+
+.testimonials-swiper .swiper-pagination-bullet-active {
+    opacity: 0.7;
+}
+
+/* ===== ARROWS ===== */
+
+.testimonials-swiper .swiper-button-next,
+.testimonials-swiper .swiper-button-prev {
+    color: #000;
+    opacity: 0.35;
+    transition: opacity 0.2s ease;
+}
+
+.testimonials-swiper .swiper-button-next:hover,
+.testimonials-swiper .swiper-button-prev:hover {
+    opacity: 0.8;
+}
+
+/* ===== HOVER ZOOM ===== */
+
+.testimonial__image {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+@media (hover: hover) {
+    .testimonial:hover .testimonial__image {
+        transform: scale(1.025);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+    }
+}
+
+/* ===== TABLET ===== */
+@media (min-width: 600px) {
+    .testimonial__image {
+        max-height: 260px;
+    }
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 1024px) {
+    .testimonial__image {
+        max-height: 300px;
+    }
+
+        /* ===== HIDE PAGINATION ON DESKTOP ===== */
+    
+        @media (min-width: 1024px) {
+            .testimonials-swiper .swiper-pagination {
+                display: none;
+            }
+        }
+}
 /* =========================
    ADAPTIVE
    ========================= */
@@ -1686,11 +1802,12 @@ body {
 /* ===== CONTACT SECTION ===== */
 
 .contact {
-    padding: 120px 0;
+    padding: 20px 0;
+
 }
 
 #contact {
-    scroll-margin-top: -45px;
+    scroll-margin-top: 53px;
 }
 
 .contact__inner {
@@ -2085,12 +2202,12 @@ body {
             transition: 0.3s;
         }
     
-        .back-btn:hover {
-            border-color: #e38faa;
-            border-radius: 100px;
-            color: #e38faa;
-            background: rgba(227, 143, 170, 0.08);
-        }
+.back-btn:hover {
+    color: #5f564f;
+    border-color: #d8cfc6;
+    border-radius: 100px;
+    background: rgba(216, 207, 198, 0.25);
+}
 
 
 .portfolio_hero__title {

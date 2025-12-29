@@ -7,6 +7,7 @@
     <title>Elena Photografia</title>
     <link rel="stylesheet" href="./css/styles.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <audio id="ui-sound" src="./sounds/click.mp3" preload="auto"></audio>
     <audio id="portfolio-sound" src="./sounds/portfolio.mp3" preload="auto"></audio>
     <audio id="contact-sound" src="./sounds/contact.mp3" preload="auto"></audio>
@@ -176,23 +177,60 @@
         </div>
     </section>
 
-    <!-- ===== OPINIE ===== -->
-    <section id="testimonials" class="section testimonials">
-        <div class="container">
-            <header class="section__header">
-                <h2>Opinie klientów</h2>
-            </header>
+<!-- ===== OPINIE ===== -->
+<section id="testimonials" class="section testimonials">
+    <div class="container">
 
-            <div class="testimonials__list">
-                <article class="testimonial">
-                    <p class="testimonial__text">
-                        Zrobiła dla nas sesję rodzinną i jesteśmy zachwyceni efektami!<br>
-                    </p>
-                    <p class="testimonial__author">—Повариха</p>
+        <header class="section__header">
+            <h2>Opinie klientów</h2>
+        </header>
+
+        <!-- Swiper -->
+        <div class="swiper testimonials-swiper">
+            <div class="swiper-wrapper">
+
+                <article class="swiper-slide testimonial">
+                    <img src="photos/opinie1.png" alt="Opinia klienta – Instagram" class="testimonial__image">
                 </article>
+
+                <article class="swiper-slide testimonial">
+                    <img src="photos/opinie1.png" alt="Opinia klienta – WhatsApp" class="testimonial__image">
+                    
+                </article>
+
+                <article class="swiper-slide testimonial">
+                    <img src="photos/opinie1.png" alt="Opinia klienta – Allegro" class="testimonial__image">
+                    
+                </article>
+
+                <article class="swiper-slide testimonial">
+                    <img src="photos/opinie1.png" alt="Opinia klienta – Allegro" class="testimonial__image">
+                    
+                </article>
+
+                <article class="swiper-slide testimonial">
+                    <img src="photos/opinie1.png" alt="Opinia klienta – Allegro" class="testimonial__image">
+                    
+                </article>
+
+                <article class="swiper-slide testimonial">
+                    <img src="photos/opinie1.png" alt="Opinia klienta – Allegro" class="testimonial__image">
+                    
+                </article>
+
             </div>
+
+            <!-- Стрелки -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- Точки (по желанию) -->
+            <div class="swiper-pagination"></div>
         </div>
-    </section>
+
+    </div>
+</section>
+
 
     <!-- ===== KONTAKT ===== -->
     <section id="contact" class="section contact">
@@ -215,12 +253,12 @@
                 
                     <li>
                         <strong>Instagram:</strong>
-                        <a href="#">@el_photo</a>
+                        <a href="https://www.instagram.com/el__photo__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">el_photo_</a>
                     </li>
                 
                     <li>
                         <strong>Facebook:</strong>
-                        <a href="#">@el_photo</a>
+                        <a href="https://www.facebook.com/people/Elena-Fotografia/100084521127231/?ref=_ig_profile_ac" target="_blank" rel="noopener noreferrer">Elena Fotografia</a>
                     </li>
                 </ul>
 
@@ -317,6 +355,9 @@
     </script>
     <script src="./js/click.js"></script>
     <script src="./js/burger.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/testimonials-swiper.js"></script>
+
    </body>
 
 </html>
