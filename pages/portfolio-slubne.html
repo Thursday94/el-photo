@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ślubne — EL PHOTO</title>
+    <title>Portrety — EL PHOTO</title>
 
     <!-- Подключаем стили из корневой папки -->
     <link rel="stylesheet" href="../css/styles.css" />
@@ -13,32 +13,83 @@
 <body>
 
     <!-- HEADER -->
-    <header class="nav">
-        <div class="container nav__inner">
-            <a href="../index.html" class="logo">EL PHOTO</a>
+    <header class="header">
+        <div class="container header__inner">
+            <a href="../index.html" class="logo">
+                <span class="logo-main">Elena </span>
+                <span class="logo-sub"> Photographia</span>
+            </a>
 
-            <nav class="nav__menu">
-                <a href="../index.html#contact" class="nav__link">Kontakt</a>
+            <nav class="nav">
+                <a href="../index.html" class="back-btn">← Powrót</a>
+                <a href="../index.html#contact" class="nav__link nav__link--primary">Kontakt</a>
             </nav>
         </div>
     </header>
+    <a href="./portfolio-portret.html"></a>
 
     <!-- HERO -->
     <section class="portfolio-hero">
         <div class="container">
-            <h1 class="portfolio-title">Sesje ślubne</h1>
-            <p class="portfolio-subtitle">Najważniejsze chwile zapisane na zawsze</p>
+            <h1 class="portfolio_hero__title">Slubne</h1>
+            <p class="portfolio_hero__subtitle">Fotografia ślubna – moja wizja
+            
+            Fotografia ślubna to dla mnie przede wszystkim emocje, autentyczność i prawdziwe historie. Podczas reportażu ślubnego
+            staram się być blisko, ale NACHALNIE — obserwuję, łapię momenty, spojrzenia i drobne gesty, które tworzą wyjątkową
+            opowieść o Waszym dniu.
+            
+            Moje sesje ślubne są naturalne, pełne ciepła i uczuć. Zależy mi na tym, abyście czuli się swobodnie, byli sobą i mogli
+            przeżywać ten dzień bez stresu. Tworzę zdjęcia, do których będziecie wracać z uśmiechem i wzruszeniem przez wiele lat.</p>
         </div>
     </section>
 
     <!-- GALLERY -->
-    <section class="portfolio-gallery container">
-        <div class="grid">
-            <img src="../photos/lena.jpg" alt="Zdjęcie ślubne" />
-            <img src="../photos/lena1.jpg" alt="Zdjęcie ślubne" />
-            <img src="../photos/mercedes.jpg" alt="Zdjęcie ślubne" />
+    <section class="portfolio-gallery">
+        <div class="container">
+            <div class="portfolio-gallery__grid">
+                <a href="../photos/difluid.JPEG" class="portfolio-item reveal">
+                    <img src="../photos/difluid.JPEG" alt="Rodzinne zdjęcie" />
+                </a>
+
+                <a href="../photos/lena.jpg" class="portfolio-item reveal">
+                    <img src="../photos/lena.jpg" alt="Rodzinne zdjęcie" />
+                </a>
+
+                <a href="../photos/lena.jpg" class="portfolio-item reveal">
+                    <img src="../photos/mercedes.jpg" alt="Rodzinne zdjęcie" />
+                </a>
+
+                <a href="../photos/lena.jpg" class="portfolio-item reveal">
+                    <img src="../photos/lena.jpg" alt="Rodzinne zdjęcie" />
+                </a>
+
+                <a href="../photos/lena1.jpg" class="portfolio-item reveal">
+                    <img src="../photos/lena1.jpg" alt="Rodzinne zdjęcie" />
+                </a>
+
+                <a href="../photos/roster.jpg" class="portfolio-item reveal">
+                    <img src="../photos/roster.jpg" alt="Rodzinne zdjęcie" />
+                </a>
+
+                <a href="../photos/lena.jpg" class="portfolio-item reveal">
+                    <img src="../photos/lena.jpg" alt="Rodzinne zdjęcie" />
+                </a>
+
+                <a href="../photos/roster.jpg" class="portfolio-item reveal">
+                    <img src="../photos/roster.jpg" alt="Rodzinne zdjęcie" />
+                </a>
+
+                <a href="../photos/lena.jpg" class="portfolio-item reveal">
+                    <img src="../photos/lena.jpg" alt="Rodzinne zdjęcie" />
+                </a>
+
+                <a href="../photos/lena.jpg" class="portfolio-item reveal">
+                    <img src="../photos/mercedes.jpg" alt="Rodzinne zdjęcie" />
+                </a>
+            </div>
         </div>
     </section>
+
 
     <!-- FOOTER -->
     <footer class="footer">
@@ -46,8 +97,26 @@
             <p>EL PHOTO — profesjonalne sesje zdjęciowe</p>
         </div>
     </footer>
+    <button class="scroll-top" aria-label="Wróć na górę">
+        <span class="scroll-top__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 19V5" stroke="#222" stroke-width="2" stroke-linecap="round" />
+                <path d="M5 12L12 5L19 12" stroke="#222" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </span>
+    </button>
+
+    <script src="../js/scroll-top.js" defer></script>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox__backdrop"></div>
+        <img class="lightbox__image" src="" alt="">
+        <button class="lightbox__close">&times;</button>
+    </div>
 
     <script src="../js/click.js"></script>
+    <script src="../js/lightbox.js"></script>
 </body>
 
 </html>

@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="no-js">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portrety — EL PHOTO</title>
 
-    <!-- Подключаем стили из корневой папки -->
     <link rel="stylesheet" href="../css/styles.css" />
 </head>
 
 <body>
 
     <!-- HEADER -->
-    <header class="nav">
-        <div class="container nav__inner">
-            <a href="../index.html" class="logo">EL PHOTO</a>
+    <header class="header">
+        <div class="container header__inner">
+            <a href="../index.html" class="logo">
+                <span class="logo-main">Elena </span>
+                <span class="logo-sub">Photographia</span>
+            </a>
 
-            <nav class="nav__menu">
-                <a href="../index.html#contact" class="nav__link">Kontakt</a>
+            <nav class="nav">
+                <a href="../index.html" class="back-btn">← Powrót</a>
+                <a href="../index.html#contact" class="nav__link nav__link--primary">Kontakt</a>
             </nav>
         </div>
     </header>
@@ -26,17 +29,53 @@
     <!-- HERO -->
     <section class="portfolio-hero">
         <div class="container">
-            <h1 class="portfolio-title">Portrety</h1>
-            <p class="portfolio-subtitle">Emocje, światło i charakter w jednym kadrze</p>
+            <h1 class="portfolio__hero-title">Portret</h1>
+            <p class="portfolio__hero-subtitle">Subtelne, eleganckie portrety podkreślające Twoją osobowość.</p>
         </div>
     </section>
 
     <!-- GALLERY -->
-    <section class="portfolio-gallery container">
-        <div class="grid">
-            <img src="../photos/lena.jpg" alt="Zdjęcie portretowe" />
-            <img src="../photos/lena1.jpg" alt="Zdjęcie portretowe" />
-            <img src="../photos/mercedes.jpg" alt="Zdjęcie portretowe" />
+    <section class="portfolio-gallery">
+        <div class="container">
+            <div class="portfolio-gallery__grid">
+
+                <a href="../photos/portret/1.jpg" class="portfolio-item reveal">
+                    <img src="../photos/portret/1.jpg" alt="Portret — sesja zdjęciowa" loading="lazy" />
+                </a>
+
+                <a href="../photos/portret/2.jpg" class="portfolio-item reveal">
+                    <img src="../photos/portret/2.jpg" alt="Portret — sesja zdjęciowa" loading="lazy" />
+                </a>
+
+                <a href="../photos/portret/3.jpg" class="portfolio-item reveal">
+                    <img src="../photos/portret/3.jpg" alt="Portret — sesja zdjęciowa" loading="lazy" />
+                </a>
+
+                <a href="../photos/portret/4jpg.jpg" class="portfolio-item reveal">
+                    <img src="../photos/portret/4jpg.jpg" alt="Portret — sesja zdjęciowa" loading="lazy" />
+                </a>
+
+                <a href="../photos/portret/5.jpg" class="portfolio-item reveal">
+                    <img src="../photos/portret/5.jpg" alt="Portret — sesja zdjęciowa" loading="lazy" />
+                </a>
+
+                <a href="../photos/portret/6.jpg" class="portfolio-item reveal">
+                    <img src="../photos/portret/6.jpg" alt="Portret — sesja zdjęciowa" loading="lazy" />
+                </a>
+
+                <a href="../photos/portret/7.jpg" class="portfolio-item reveal">
+                    <img src="../photos/portret/7.jpg" alt="Portret — sesja zdjęciowa" loading="lazy" />
+                </a>
+
+                <a href="../photos/portret/8.jpg" class="portfolio-item reveal">
+                    <img src="../photos/portret/8.jpg" alt="Portret — sesja zdjęciowa" loading="lazy" />
+                </a>
+
+                <a href="../photos/portret/9.jpg" class="portfolio-item reveal">
+                    <img src="../photos/portret/9.jpg" alt="Portret — sesja zdjęciowa" loading="lazy" />
+                </a>
+
+            </div>
         </div>
     </section>
 
@@ -47,7 +86,28 @@
         </div>
     </footer>
 
+    <!-- Scroll to top -->
+    <button class="scroll-top" aria-label="Wróć na górę">
+        <span class="scroll-top__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 19V5" stroke="#222" stroke-width="2" stroke-linecap="round" />
+                <path d="M5 12L12 5L19 12" stroke="#222" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </span>
+    </button>
+
+    <script src="../js/scroll-top.js" defer></script>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox__backdrop"></div>
+        <img class="lightbox__image" src="" alt="">
+        <button class="lightbox__close">&times;</button>
+    </div>
+
     <script src="../js/click.js"></script>
+    <script src="../js/lightbox.js"></script>
+
 </body>
 
 </html>
