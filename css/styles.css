@@ -32,9 +32,9 @@ body {
     top: 0;
     z-index: 1000;
     padding: 10px 0;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(8px);
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.92);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
     transition: background-color 240ms ease, box-shadow 240ms ease;
     -webkit-font-smoothing: antialiased;
@@ -91,6 +91,7 @@ body {
     text-rendering: geometricPrecision;
     transform: translateZ(0);
     z-index: 1010;
+    opacity: 0.92;
 }
 
 .logo-main,
@@ -1357,6 +1358,56 @@ body {
     }
 }
 
+.voucher__gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 40px 0;
+
+}
+
+.voucher__gallery img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.voucher__gallery img:hover {
+    transform: scale(1.03);
+}
+
+/* контейнер кнопки */
+.voucher__cta {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* сама кнопка */
+.voucher__cta .btn {
+    display: inline-block;
+    padding: 10px 32px;
+
+    background: #111;
+    color: #fff;
+    border: 1px solid #111;
+    border-radius: 4px;
+
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    transition: all .25s ease;
+}
+
+/* hover */
+.voucher__cta .btn:hover {
+    background: #fff;
+    color: #111;
+}
+
 /* ========================= 
    OFFER ADAPTIVE 
    ========================= */
@@ -1405,6 +1456,14 @@ body {
         padding-top: 10px;
         margin-top: 14px;
     }
+}
+
+@media (max-width: 900px) {
+
+    .voucher__gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
 }
 
 /* --------- Mobile / large phones (<=768px) --------- */
@@ -1465,6 +1524,22 @@ body {
         margin-top: 18px;
     }
 }
+
+@media (max-width: 600px) {
+
+    .voucher__gallery {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+    .offer__card {
+        padding: 20px;
+    }
+
+          .voucher__gallery img {
+              height: 320px;
+          }
 
 /* --------- Small phones (<=480px) --------- */
 @media (max-width: 480px) {
