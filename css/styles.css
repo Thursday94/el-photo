@@ -2319,62 +2319,6 @@ body {
 }
 
 
-
-/* ==== LIGHTBOX ==== */
-.lightbox {
-    position: fixed;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 3000;
-}
-
-.lightbox--active {
-    display: flex;
-}
-
-.lightbox__backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(4px);
-}
-
-.lightbox__image {
-    max-width: 90vw;
-    max-height: 90vh;
-    border-radius: 16px;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
-    animation: lightbox-pop .35s ease;
-}
-
-@keyframes lightbox-pop {
-    from {
-        transform: scale(.85);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.lightbox__close {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    font-size: 38px;
-    background: rgba(255, 255, 255, 0.15);
-    border: none;
-    color: white;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
 /*====== Page portfolio-rodzinne.html ===================================================================================*/
 /* ===== HERO ===== */
 
@@ -2628,6 +2572,123 @@ body {
         0 4px 10px rgba(0, 0, 0, 0.14);
 }
 
+/* ================= LIGHTBOX ================= */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+}
+
+.lightbox--active {
+    display: flex;
+}
+
+/* затемнение фона */
+
+.lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+}
+
+/* фото */
+
+.lightbox__image {
+    position: relative;
+    z-index: 2;
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* кнопка закрытия */
+
+.lightbox__close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    z-index: 3;
+
+    font-size: 36px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* стрелки */
+
+.lightbox__prev,
+.lightbox__next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+
+    background: rgba(0, 0, 0, 0.35);
+    color: white;
+    border: none;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+
+    font-size: 32px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background .2s ease, transform .2s ease;
+}
+
+.lightbox__prev:hover,
+.lightbox__next:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.lightbox__prev {
+    left: 40px;
+}
+
+.lightbox__next {
+    right: 40px;
+}
+
+/* адаптив для телефонов */
+
+@media (max-width: 768px) {
+
+    .lightbox__prev,
+    .lightbox__next {
+        width: 44px;
+        height: 44px;
+        font-size: 26px;
+    }
+
+    .lightbox__prev {
+        left: 16px;
+    }
+
+    .lightbox__next {
+        right: 16px;
+    }
+
+    .lightbox__close {
+        top: 20px;
+        right: 20px;
+        font-size: 30px;
+    }
+}
 
 
 /* ФИНАЛЬНОЕ ПРАВИЛО — перебивает всё старое */
