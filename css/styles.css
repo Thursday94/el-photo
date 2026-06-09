@@ -2494,6 +2494,66 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+
+/* ============================== MOBILE FIXES ===================================== */
+
+/* Контакты не вылезают за экран */
+.contact__list a {
+    word-break: break-word;
+}
+
+/* Hero для очень маленьких экранов */
+@media (max-width: 360px) {
+    .hero__title {
+        font-size: 22px;
+    }
+
+    .hero__subtitle {
+        font-size: 14px;
+    }
+}
+
+/* Lightbox на телефонах */
+@media (max-width: 480px) {
+
+    .lightbox__prev,
+    .lightbox__next {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
+
+    .lightbox__prev {
+        left: 10px;
+    }
+
+    .lightbox__next {
+        right: 10px;
+    }
+
+    .lightbox__close {
+        top: 12px;
+        right: 12px;
+        font-size: 28px;
+    }
+}
+
+/* Бургер-меню */
+@media (max-width: 768px) {
+
+    .nav {
+        display: none !important;
+    }
+
+    .nav.nav--open {
+        display: flex !important;
+        flex-direction: column;
+    }
+}
+
+
+
 /* ========================== SCROLL TO TOP ========================= */
 
 :root {
@@ -2626,10 +2686,15 @@ body {
 
 .lightbox__prev,
 .lightbox__next {
-    position: absolute;
+   /position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 3;
+
+        position: fixed !important;
+            z-index: 99999 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
 
     background: rgba(0, 0, 0, 0.35);
     color: white;
@@ -2656,12 +2721,19 @@ body {
     transform: translateY(-50%) scale(1.08);
 }
 
+
+
 .lightbox__prev {
-    left: 40px;
+    left: 30px;
 }
 
 .lightbox__next {
-    right: 40px;
+    right: 30px;
+}
+
+.lightbox__prev:hover,
+.lightbox__next:hover {
+    background: rgba(255, 255, 255, 0.25);
 }
 
 /* адаптив для телефонов */

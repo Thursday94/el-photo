@@ -5,6 +5,7 @@ const lightboxBackdrop = lightbox.querySelector(".lightbox__backdrop");
 const prevBtn = lightbox.querySelector(".lightbox__prev");
 const nextBtn = lightbox.querySelector(".lightbox__next");
 
+const items = document.querySelectorAll(".portfolio-item");
 const images = document.querySelectorAll(".portfolio-item img");
 
 let currentIndex = 0;
@@ -13,6 +14,10 @@ function openLightbox(index) {
     currentIndex = index;
     lightboxImg.src = images[currentIndex].src;
     lightbox.classList.add("lightbox--active");
+}
+
+function closeLightbox() {
+    lightbox.classList.remove("lightbox--active");
 }
 
 function showNext() {
@@ -25,23 +30,23 @@ function showPrev() {
     lightboxImg.src = images[currentIndex].src;
 }
 
-images.forEach((img, index) => {
-    img.addEventListener("click", () => {
+// Открытие без перехода по ссылке
+items.forEach((item, index) => {
+    item.addEventListener("click", (e) => {
+        e.preventDefault();
         openLightbox(index);
     });
 });
 
-function closeLightbox() {
-    lightbox.classList.remove("lightbox--active");
-    lightboxImg.src = "";
-}
-
+// Закрытие
 lightboxClose.addEventListener("click", closeLightbox);
 lightboxBackdrop.addEventListener("click", closeLightbox);
 
+// Стрелки
 prevBtn.addEventListener("click", showPrev);
 nextBtn.addEventListener("click", showNext);
 
+// Клавиатура
 document.addEventListener("keydown", (e) => {
     if (!lightbox.classList.contains("lightbox--active")) return;
 
