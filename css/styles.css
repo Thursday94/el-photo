@@ -2497,6 +2497,186 @@ body {
 }
 
 
+/* ====================== SZKOLENIE PAGE ====================== */
+
+/* HERO */
+.portfolio-hero {
+    padding: 70px 0 50px;
+    background: linear-gradient(120deg, #f6f5f3, #fdfcfa, #f1efec);
+    background-size: 400% 400%;
+    animation: heroGlow 12s ease-in-out infinite;
+}
+
+.portfolio__hero-title {
+    font-family: "Libre Baskerville", serif;
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: #111;
+    margin-bottom: 18px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroFadeUp 1s ease forwards;
+}
+
+.portfolio__hero-subtitle {
+    max-width: 4cqi;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.62);
+    line-height: 1.8;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroFadeUp 1s ease forwards 0.25s;
+}
+
+/* PROGRAM SECTION */
+.training-program {
+    padding: 70px 0;
+}
+
+.section-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 400;
+    color: #111;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+}
+
+.program-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+}
+
+.program-card {
+    background: #ffffff;
+    padding: 36px;
+    border-radius: 24px;
+
+    border: 1px solid rgba(0, 0, 0, 0.04);
+
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.08),
+        0 4px 16px rgba(0, 0, 0, 0.04);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        background .25s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-6px);
+    background: #f3f2f0;
+    box-shadow:
+        0 20px 42px rgba(0, 0, 0, 0.12),
+        0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.program-card h3 {
+    font-size: 28px;
+    margin-bottom: 18px;
+    color: #111;
+    font-weight: 700;
+}
+
+.program-card p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(0, 0, 0, 0.62);
+}
+
+/* OPTIONAL CTA */
+.training-cta {
+    padding: 60px 0 90px;
+    text-align: center;
+}
+
+.training-cta h2 {
+    font-size: 42px;
+    margin-bottom: 16px;
+}
+
+.training-cta p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 28px;
+}
+
+/* TABLET */
+@media (max-width: 1024px) {
+    .program-card {
+        padding: 28px;
+    }
+
+    .program-card h3 {
+        font-size: 24px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .portfolio-hero {
+        padding: 50px 0 35px;
+    }
+
+    .portfolio__hero-title {
+        font-size: 34px;
+    }
+
+    .portfolio__hero-subtitle {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .training-program {
+        padding: 45px 0;
+    }
+
+    .section-title {
+        font-size: 32px;
+        margin-bottom: 28px;
+    }
+
+    .program-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .program-card {
+        padding: 24px;
+        border-radius: 18px;
+    }
+
+    .program-card h3 {
+        font-size: 22px;
+    }
+
+    .program-card p {
+        font-size: 15px;
+    }
+}
+
+/* SMALL PHONES */
+@media (max-width: 480px) {
+    .portfolio__hero-title {
+        font-size: 28px;
+    }
+
+    .portfolio__hero-subtitle {
+        font-size: 15px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+}
+
+```
+
 /* ============================== MOBILE FIXES ===================================== */
 
 /* Контакты не вылезают за экран */
