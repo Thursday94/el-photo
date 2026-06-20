@@ -10,7 +10,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        const cards = document.querySelectorAll(".program-card");
+        const cards = document.querySelectorAll(".program-card, .audience-card");
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -19,13 +19,13 @@
 
                     setTimeout(() => {
                         entry.target.classList.add("show");
-                    }, index * 220);
+                    }, index * 180);
 
                     observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.3
+            threshold: 0.2
         });
 
         cards.forEach(card => observer.observe(card));
@@ -102,9 +102,28 @@ czy dopiero zaczynasz, czy chcesz rozwinąć swoje umiejętności.
         </div>
     </section>
 
-                <div class="hero__actions">
-                    <a href="../index.html#contact" class="btn btn--primary contact-sound">Zapisz się</a>
+    <section class="training-audience">
+        <div class="container">
+            <h2 class="section-title">Dla kogo jest to szkolenie?</h2>
+    
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <h3>Początkujący</h3>
+                    <p>Dla osób, które dopiero zaczynają i chcą zrozumieć podstawy fotografii.</p>
                 </div>
+    
+                <div class="audience-card">
+                    <h3>Fotografowie hobbyści</h3>
+                    <p>Dla tych, którzy fotografują z pasji i chcą świadomie rozwijać swój styl.</p>
+                </div>
+    
+                <div class="audience-card">
+                    <h3>Osoby chcące wejść w branżę</h3>
+                    <p>Dla przyszłych profesjonalistów, którzy chcą budować portfolio i pracować z klientami.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- GALLERY -->
     <section class="portfolio-gallery">
