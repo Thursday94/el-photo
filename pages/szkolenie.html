@@ -8,6 +8,40 @@
     <link rel="stylesheet" href="../css/styles.css" />
 </head>
 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".program-card");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const index = [...cards].indexOf(entry.target);
+
+                    setTimeout(() => {
+                        entry.target.classList.add("show");
+                    }, index * 220);
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        cards.forEach(card => observer.observe(card));
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const hero = document.querySelector(".portfolio-hero");
+
+        setTimeout(() => {
+            hero.classList.add("show");
+        }, 300);
+    });
+</script>
+
 <body>
     <!-- HEADER -->
     <header class="header">
@@ -29,9 +63,12 @@
         <div class="container">
             <h1 class="portfolio-hero__title">Szkolenie fotograficzne</h1>
             <p class="portfolio-hero__subtitle">
-                Nauczycie się technik fotografii, które pomogą Wam tworzyć
-                wyjątkowe i profesjonalne zdjęcia. Zajęcia są praktyczne
-                i dopasowane do indywidualnych potrzeb.
+Podczas szkolenia nauczysz się świadomie tworzyć kadry, które przyciągają uwagę i budzą emocje.
+<br/>
+Krok po kroku przeprowadzę Cię przez podstawy pracy z aparatem, światłem i kompozycją, pokazując, jak uchwycić piękno
+chwili w profesjonalny sposób. <br />Szkolenie jest w pełni praktyczne i dopasowane do Twojego poziomu — niezależnie od tego,
+czy dopiero zaczynasz, czy chcesz rozwinąć swoje umiejętności.
+
             </p>
         </div>
     </section>
@@ -43,27 +80,31 @@
 
             <div class="program-grid">
                 <article class="program-card">
-                    <h3>📷 Podstawy fotografii</h3>
+                    <h3> Podstawy fotografii</h3>
                     <p>Przysłona, czas naświetlania, ISO i ekspozycja.</p>
                 </article>
 
                 <article class="program-card">
-                    <h3>🌅 Kompozycja kadru</h3>
+                    <h3> Kompozycja kadru</h3>
                     <p>Zasada trójpodziału, perspektywa i budowanie ujęcia.</p>
                 </article>
 
                 <article class="program-card">
-                    <h3>💡 Praca ze światłem</h3>
+                    <h3> Praca ze światłem</h3>
                     <p>Światło naturalne, studyjne i kreatywne techniki oświetlenia.</p>
                 </article>
 
                 <article class="program-card">
-                    <h3>🎨 Edycja zdjęć</h3>
+                    <h3> Edycja zdjęć</h3>
                     <p>Podstawy Lightroom, Photoshop i color grading.</p>
                 </article>
             </div>
         </div>
     </section>
+
+                <div class="hero__actions">
+                    <a href="../index.html#contact" class="btn btn--primary contact-sound">Zapisz się</a>
+                </div>
 
     <!-- GALLERY -->
     <section class="portfolio-gallery">
