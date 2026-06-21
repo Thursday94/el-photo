@@ -1234,7 +1234,7 @@ body {
     /* начальная анимация входа (если используешь) */
     opacity: 0;
     transform: translateY(0);
-    animation: offer_card_in 0.7s ease-out forwards;
+    /*animation: offer_card_in 0.7s ease-out forwards;*/
 
     transition: transform .35s ease, box-shadow .35s ease, background .25s ease;
     will-change: transform, box-shadow, opacity;
@@ -1604,6 +1604,56 @@ body {
     .offer__card+.offer__card {
         margin-top: 14px;
     }
+}
+
+
+/*анимация карточек новая*/
+
+/* JS reveal states */
+.voucher__gallery img,
+.offer__card,
+.voucher__cta {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* Фото */
+.voucher__gallery img {
+    transform: scale(0.9);
+    transition:
+        opacity 1s ease,
+        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.voucher__gallery img.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Карточки */
+.offer__card {
+    transform: translateY(50px);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow .35s ease,
+        background .25s ease;
+}
+
+.offer__card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Кнопка */
+.voucher__cta {
+    transform: translateY(25px) scale(0.95);
+    transition: all 0.8s ease;
+}
+
+.voucher__cta.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 /* ===== ABOUT SECTION  ===== */
