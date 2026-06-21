@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="../css/styles.css" />
 </head>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+const hero = document.querySelector(".portfolio-hero");
+
+if (hero) {
+setTimeout(() => {
+hero.classList.add("show");
+}, 200);
+}
+});
+</script>
+
+
 <body>
 
     <!-- HEADER -->
@@ -29,8 +42,8 @@
     <!-- HERO -->
     <section class="portfolio-hero">
         <div class="container">
-            <h1 class="portfolio__hero_title">Portret</h1>
-            <p class="portfolio__hero_subtitle">Sesja portretowa, to moment, w którym każdy może poczuć swoją wyjątkowość i siłę.
+            <h1 class="portfolio-hero__title">Portret</h1>
+            <p class="portfolio-hero__subtitle">Sesja portretowa, to moment, w którym każdy może poczuć swoją wyjątkowość i siłę.
             Moim celem jest pokazać Cię w jak najpiękniejszym świetle. Każdy portret podkreśla Twoją urodę i wyjątkowość.</p>
         </div>
     </section>

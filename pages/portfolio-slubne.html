@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="../css/styles.css" />
 </head>
 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const hero = document.querySelector(".portfolio-hero");
+
+        if (hero) {
+            setTimeout(() => {
+                hero.classList.add("show");
+            }, 200);
+        }
+    });
+</script>
+
 <body>
 
     <!-- HEADER -->
@@ -29,8 +41,8 @@
     <!-- HERO -->
     <section class="portfolio-hero">
         <div class="container">
-            <h1 class="portfolio_hero__title">Fotografia ślubna</h1>
-            <p class="portfolio_hero__subtitle">Tworzę fotografię ślubną, która opowiada prawdziwe historie. Staram się uchwycić naturalność, bliskość i atmosferę
+            <h1 class="portfolio-hero__title">Fotografia ślubna</h1>
+            <p class="portfolio-hero__subtitle">Tworzę fotografię ślubną, która opowiada prawdziwe historie. Staram się uchwycić naturalność, bliskość i atmosferę
             Waszego ślubu taką, jaka naprawdę była. Każde wesele jest inne , właśnie to sprawia, że fotografia ślubna jest dla mnie
             tak wyjątkowa.
             Chcę, abyście po latach wracali do nich z tym samym uczuciem radości i wzruszenia, które towarzyszyło Wam w dniu ślubu.

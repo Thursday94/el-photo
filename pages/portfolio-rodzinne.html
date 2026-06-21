@@ -4,11 +4,23 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio rodzinne — EL PHOTO</title>
+    <title>Portfolio rodzinne — Elena Sudas</title>
 
     <!-- Подключаем стили из корневой папки -->
     <link rel="stylesheet" href="../css/styles.css" />
 </head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const hero = document.querySelector(".portfolio-hero");
+
+        if (hero) {
+            setTimeout(() => {
+                hero.classList.add("show");
+            }, 200);
+        }
+    });
+</script>
 
 <body>
 
@@ -31,7 +43,7 @@
     <!-- HERO -->
     <section class="portfolio-hero">
         <div class="container">
-            <h1 class="portfolio_hero__title">Sesja rodzinna</h1>
+            <h1 class="portfolio-hero__title">Sesja rodzinna</h1>
             <p class="portfolio_hero__subtitle">Sesje rodzinne to przede wszystkim wspólny czas.
             Bez pośpiechu, pozowania i presji.
             
