@@ -250,6 +250,7 @@ body {
     padding: 8px 0;
     position: relative;
     transition: color .25s ease;
+    
 }
 
 .nav__link::after {
@@ -283,6 +284,8 @@ body {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     transition: all .25s ease;
+    
+    
 }
 
 .nav__link--primary:hover {
@@ -2480,15 +2483,13 @@ margin-top: 8px;
 }
 
 .portfolio-gallery__grid {
-    column-count: 3;
-    column-gap: 26px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
 }
 
 .portfolio-item {
-    display: inline-block;
-    margin-bottom: 26px;
-    width: 100%;
-    break-inside: avoid;
+    width: 99%;
 }
 
 /* ← исправлено: убран конфликт transform */
@@ -2509,6 +2510,9 @@ margin-top: 8px;
     transition:
         transform .35s ease,
         box-shadow .35s ease;
+    
+    object-fit: cover;
+
 }
 
 .portfolio-item:hover img {
