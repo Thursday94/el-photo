@@ -2869,6 +2869,113 @@ margin-top: 8px;
     color: rgba(0, 0, 0, 0.58);
 }
 
+/* ================= RESPONSIVE Szkolenie ================= */
+
+/* TABLET */
+@media (max-width: 1024px) {
+    .portfolio-hero {
+        padding: 60px 0 50px;
+    }
+
+    .portfolio-hero__title {
+        font-size: clamp(40px, 5vw, 56px);
+    }
+
+    .portfolio-hero__subtitle {
+        font-size: 18px;
+        line-height: 1.7;
+    }
+
+    .section-title {
+        font-size: clamp(34px, 4vw, 48px);
+        margin-bottom: 35px;
+    }
+
+    .program-grid,
+    .audience-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .program-card,
+    .audience-card {
+        padding: 30px;
+        border-radius: 24px;
+    }
+
+    .program-card h3,
+    .audience-card h3 {
+        font-size: 26px;
+    }
+
+    .program-card p,
+    .audience-card p {
+        font-size: 16px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .portfolio-hero {
+        padding: 40px 0 35px;
+    }
+
+    .portfolio-hero__title {
+        font-size: 34px;
+        line-height: 1.15;
+    }
+
+    .portfolio-hero__subtitle {
+        font-size: 15px;
+        line-height: 1.7;
+        max-width: 100%;
+    }
+
+    .training-program,
+    .training-audience {
+        padding: 30px 0 50px;
+    }
+
+    .section-title {
+        font-size: 30px;
+        margin-bottom: 25px;
+    }
+
+    .program-card,
+    .audience-card {
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    .program-card h3,
+    .audience-card h3 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .program-card p,
+    .audience-card p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+}
+
+/* SMALL PHONES */
+@media (max-width: 480px) {
+    .portfolio-hero__title {
+        font-size: 28px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .program-card,
+    .audience-card {
+        padding: 18px;
+    }
+}
+
 /* TABLET */
 @media (max-width: 1024px) {
     .program-grid {
