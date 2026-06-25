@@ -2634,7 +2634,7 @@ margin-top: 8px;
     animation: glowMove 12s ease-in-out infinite;
 }
 
-.portfolio__hero-title {
+.portfolio-hero__title {
     font-family: "Libre Baskerville", serif;
     font-size: clamp(46px, 6vw, 74px);
     font-weight: 400;
@@ -2647,7 +2647,7 @@ margin-top: 8px;
     animation: fadeUp 1s ease forwards;
 }
 
-.portfolio__hero-subtitle {
+.portfolio-hero__subtitle {
     max-width: 760px;
     font-size: 20px;
     line-height: 1.8;
@@ -2817,13 +2817,13 @@ margin-top: 8px;
     opacity: 0;
     transform: translateY(60px) scale(0.96);
     filter: blur(10px);
+    position: relative;
+    overflow: hidden;
 
     transition:
         opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
         transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
         filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-        position: relative;
-            overflow: hidden;
 }
 
 .audience-card::before {
@@ -3171,7 +3171,7 @@ margin-top: 8px;
 
 .lightbox__prev,
 .lightbox__next {
-   /position: absolute;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 3;
